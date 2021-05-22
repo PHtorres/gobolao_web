@@ -1,5 +1,4 @@
 import React from 'react';
-import LogoGoBolao from '../LogoGoBolao';
 
 import { Container, ListaMenu, ItemMenu, LinkMenu, TituloMenu } from './styles';
 

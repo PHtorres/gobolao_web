@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.nav`
-  padding: 5px;
+  padding: 10px 30px;
+  border-right: 1px solid ${({theme}) => theme.corBarraDivisao};
+  height: 80vh;
 `;
 
-export const TituloMenu = styled.h5`
+export const TituloMenu = styled.span`
   color: ${({theme}) => theme.corTextoTituloSecundario};
 `;
 

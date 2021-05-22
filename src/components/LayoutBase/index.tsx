@@ -1,21 +1,14 @@
 import React from 'react';
-import Cabecalho from '../Cabecalho';
-import Menu from '../Menu';
+import Cabecalho from './Cabecalho';
 
-import { Container, AreaCorpo, AreaMenu, AreaPaginas } from './styles';
+import { Container } from './styles';
+import Corpo from './Corpo';
 
-const LayoutBase: React.FC = ({ children }) => {
+const LayoutBase: React.FC = () => {
     return (
         <Container>
             <Cabecalho />
-            <AreaCorpo>
-                {/* <AreaMenu>
-                    <Menu />
-                </AreaMenu> */}
-                <AreaPaginas>
-                    {children}
-                </AreaPaginas>
-            </AreaCorpo>
+            <Corpo/>
         </Container>
     );
 }
