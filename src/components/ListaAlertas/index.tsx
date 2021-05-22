@@ -12,7 +12,7 @@ const ListaAlertas: React.FC<ListaAlertasPropos> = ({ mensagens }) => {
     return (
         <Container>
             {mensagens.map(item => (
-                <Alerta id={item.id} mensagem={item.mensagem} tipo={item.tipo} />
+                <Alerta key={item.id} id={item.id} mensagem={item.mensagem} tipo={item.tipo} />
             ))}
         </Container>
     );

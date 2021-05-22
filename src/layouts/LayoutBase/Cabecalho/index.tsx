@@ -1,5 +1,5 @@
 import React from 'react';
-import LogoGoBolao from '../../LogoGoBolao';
+import LogoGoBolao from '../../../components/LogoGoBolao';
 
 import { Container } from './styles';
 

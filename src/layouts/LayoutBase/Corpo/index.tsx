@@ -12,7 +12,8 @@ const Corpo: React.FC = () => {
   return (
     <Container>
       {usuario.logado &&
-        <Menu />}
+        <Menu />
+      }
       <Rotas />
     </Container>
   );

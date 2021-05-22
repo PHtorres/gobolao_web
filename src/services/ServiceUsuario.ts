@@ -1,16 +1,9 @@
+import ICriarUsuario from "../models/ICriarUsuario";
 import IResposta from "../models/IResposta";
 import IResultadoAutenticacao from "../models/IResultadoAutenticacao";
 import IUsuario from "../models/IUsuario";
 import apiGoBolao from "./ApiGoBolao";
 import ServiceStorage from "./ServiceStorage";
-
-interface CriarUsuarioParametros {
-    apelido: string,
-    email: string,
-    senha: string,
-    confirmaSenha: string
-}
-
 export default class ServiceUsuario {
 
     private storage: ServiceStorage;
@@ -34,7 +27,7 @@ export default class ServiceUsuario {
         return {} as IResultadoAutenticacao;
     }
 
-    public async CriarUsuario(usuario: CriarUsuarioParametros): Promise<IResposta<IUsuario>> {
+    public async CriarUsuario(usuario: ICriarUsuario): Promise<IResposta<IUsuario>> {
         const { data } = await apiGoBolao.post<IResposta<IUsuario>>('usuario', usuario);
         return data || {} as IResposta<IUsuario>;
     }

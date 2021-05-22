@@ -5,17 +5,13 @@ import BotaoPrimario from '../../components/BotaoPrimario';
 import CaixaTexto from '../../components/CaixaTexto';
 import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import Titulo from '../../components/Titulo';
-import { useAlerta } from '../../hooks/HAlerta';
 import { useUsuario } from '../../hooks/HUsuario';
-import ServiceUsuario from '../../services/ServiceUsuario';
 import { Formulario } from './styles';
 
-const servicoUsuario = new ServiceUsuario();
 
 const CriarConta: React.FC = () => {
 
-    const {logar} = useUsuario();
-    const {exibirMensagens, exibirMensagem} = useAlerta();
+    const { criar } = useUsuario();
     const [apelido, setApelido] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
@@ -24,20 +20,12 @@ const CriarConta: React.FC = () => {
     const tentarCriarConta = async (evento: FormEvent<HTMLFormElement>): Promise<void> => {
 
         evento.preventDefault();
-        const { notificacoes, sucesso } = await servicoUsuario.CriarUsuario({
+        criar({
             apelido,
             email,
             senha,
             confirmaSenha
         });
-
-        if(sucesso){
-            logar(email, senha);
-            exibirMensagem(`Bem-vindo ao GoBolão, ${apelido}`, 'sucesso');
-            return;
-        }
-
-        exibirMensagens(notificacoes, 'erro')
     }
 
     return (

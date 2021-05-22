@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useState, useContext } from 'react';
+import ICriarUsuario from '../models/ICriarUsuario';
 import IUsuario from '../models/IUsuario';
 import apiGoBolao from '../services/ApiGoBolao';
 import ServiceStorage from '../services/ServiceStorage';
@@ -9,6 +10,7 @@ interface IContextoUsuario {
     usuario: IUsuario;
     logar(email: string, senha: string): Promise<void>;
     sair(): void;
+    criar(criarUsuarioProps:ICriarUsuario):void;
     alterar(nome: string, email: string): void;
 }
 
@@ -25,7 +27,7 @@ export const UsuarioProvider: React.FC = ({ children }) => {
         const resultadoStorage = storage.PegarUsuario();
         return resultadoStorage;
     });
-
+ 
     const adicionarTokenNaApi = () => {
         const tokenStorage = storage.PegarTokenUsuario();
         if (tokenStorage.length > 0) {
@@ -33,27 +35,45 @@ export const UsuarioProvider: React.FC = ({ children }) => {
         }
     }
 
-    adicionarTokenNaApi();
+    adicionarTokenNaApi(); 
 
     const logar = useCallback(async (email: string, senha: string) => {
+
+        if(email.length === 0 || senha.length === 0){
+            exibirMensagem('E-mail e senha precisam ser preenchidos.', 'erro');
+            return;
+        }
 
         const {resposta} = await servicoUsuario.Autenticar(email, senha);
         if (resposta?.conteudo?.logado) {
             adicionarTokenNaApi();
             setUsuario(resposta.conteudo);
-            return;
+            return;   
         }
 
         if (resposta?.notificacoes) {
             exibirMensagens(resposta.notificacoes, 'erro');
         }
 
-    }, [exibirMensagens]);
+    }, [exibirMensagens, exibirMensagem]);
 
     const sair = useCallback(() => {
         storage.LimparDadosUsuario();
         setUsuario({} as IUsuario);
     }, []);
+
+    const criar = useCallback(async (criarUsuarioProps:ICriarUsuario) => {
+
+        const resultado = await servicoUsuario.CriarUsuario(criarUsuarioProps);
+        if (resultado.sucesso) {
+            exibirMensagem(`Bem-vindo ao GoBolão, ${criarUsuarioProps.apelido}`, 'sucesso');
+            logar(criarUsuarioProps.email, criarUsuarioProps.senha);
+            return;
+        }
+
+        exibirMensagens(resultado?.notificacoes, 'erro');
+
+    }, [exibirMensagens, exibirMensagem, logar]);
 
     const alterar = useCallback(async (apelido: string, email: string) => {
 
@@ -79,7 +99,7 @@ export const UsuarioProvider: React.FC = ({ children }) => {
 
 
     return (
-        <ContextoUsuario.Provider value={{ usuario, logar, sair, alterar }}>
+        <ContextoUsuario.Provider value={{ usuario, logar, sair, criar, alterar }}>
             {children}
         </ContextoUsuario.Provider>
     );
