@@ -42,6 +42,11 @@ const utils = {
         return dataFormatada;
     },
 
+    DataCurtaComHora(data: Date): string {
+        const dataFormatada = data.toLocaleTimeString('pt-br', { day: 'numeric', month: 'short', hour:'2-digit' });
+        return dataFormatada + 'h';
+    },
+
     addDays(date: Date, days: number) {
         const copy = new Date(Number(date))
         copy.setDate(date.getDate() + days)
