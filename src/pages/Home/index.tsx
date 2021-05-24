@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import ContainerPadrao from '../../components/ContainerPadrao';
+import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import ListaJogos from '../../components/ListaJogos';
 import Titulo from '../../components/Titulo';
 import IJogo from '../../models/IJogo';
 import ServiceJogo from '../../services/ServiceJogo';
 
-// import { Container } from './styles';
+import { AreaJogos } from './styles';
 
 const servicoJogo = new ServiceJogo();
 
@@ -37,14 +38,17 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <ContainerPadrao>
-      <Titulo>Jogos de hoje</Titulo>
+    <ContainerPadraoCentralizado>
+      <Titulo>Jogos para palpitar</Titulo>
+      {jogosDeHoje.length > 0 &&
+        <Titulo>Jogos de hoje</Titulo>}
       <ListaJogos jogos={jogosDeHoje} />
-      <Titulo>Jogos de amanhã</Titulo>
+      {jogosDeAmanha.length > 0 &&
+        <Titulo>Jogos de amanhã</Titulo>}
       <ListaJogos jogos={jogosDeAmanha} />
-      <Titulo>Todos os jogos</Titulo>
+      <Titulo>Todos</Titulo>
       <ListaJogos jogos={todosJogos} />
-    </ContainerPadrao>
+    </ContainerPadraoCentralizado>
   );
 }
 

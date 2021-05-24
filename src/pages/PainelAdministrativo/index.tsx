@@ -55,7 +55,7 @@ const PainelAdministrativo: React.FC = () => {
             return;
           }
 
-          exibirMensagens(data.notificacoes, 'erro');
+          exibirMensagens(notificacoes, 'erro');
         }
       }
     }
@@ -89,7 +89,7 @@ const PainelAdministrativo: React.FC = () => {
   const criarJogo = async (evento: FormEvent<HTMLFormElement>) => {
     evento.preventDefault();
     const { notificacoes, sucesso } = await servicoJogo.CriarJogo({
-      dataHora: new Date(dataHora),
+      dataHora,
       fase,
       idCampeonato,
       idMandante,

@@ -4,7 +4,7 @@ import apiGoBolao from "./ApiGoBolao";
 
 interface CriarJogoProps{
     idCampeonato: number;
-    dataHora: Date;
+    dataHora: string;
     idMandante: number;
     idVisitante: number;
     fase: string;
@@ -28,7 +28,6 @@ export default class ServiceJogo{
     }
 
     public async CriarJogo(jogo:CriarJogoProps):Promise<IResposta<any>>{
-        console.log('jogo', jogo);
         const {data} = await apiGoBolao.post<IResposta<any>>('jogo', jogo);
         return data || {} as IResposta<any>;
     }
