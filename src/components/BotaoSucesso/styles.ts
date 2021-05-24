@@ -14,7 +14,7 @@ export const Container = styled.button`
             background: ${props => shade(0.3, props.theme.corFundoSucesso)}
         }
         @media(max-width: 415px) {
-            padding: 5px;
+            padding: 3px;
         }
 `;
 

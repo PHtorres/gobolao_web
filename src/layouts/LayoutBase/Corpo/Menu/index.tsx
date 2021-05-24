@@ -11,6 +11,9 @@ const Menu: React.FC = () => {
                   <LinkMenu to="/">Home</LinkMenu>
               </ItemMenu>
               <ItemMenu>
+                  <LinkMenu to="/boloes">Bolões</LinkMenu>
+              </ItemMenu>
+              <ItemMenu>
                   <LinkMenu to="/palpites">Palpites</LinkMenu>
               </ItemMenu>
               <ItemMenu>

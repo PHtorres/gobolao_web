@@ -12,7 +12,7 @@ max-width:50px;
 margin-bottom:15px;
 
 @media(max-width: 415px) {
-    max-width:35px;
+    max-width:40px;
   }
 
 `;
