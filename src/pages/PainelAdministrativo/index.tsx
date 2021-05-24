@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { BiAward, BiChair, BiFile, BiFlag, BiRun, BiTime } from 'react-icons/bi';
+import { BiAward, BiFile, BiFlag, BiRun, BiTime } from 'react-icons/bi';
 import BotaoPrimario from '../../components/BotaoPrimario';
 import CaixaArquivo from '../../components/CaixaArquivo';
 import CaixaTexto from '../../components/CaixaTexto';
