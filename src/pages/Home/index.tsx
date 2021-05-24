@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import ContainerPadrao from '../../components/ContainerPadrao';
 import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import ListaJogos from '../../components/ListaJogos';
 import Titulo from '../../components/Titulo';
 import IJogo from '../../models/IJogo';
 import ServiceJogo from '../../services/ServiceJogo';
 
-import { AreaJogos } from './styles';
 
 const servicoJogo = new ServiceJogo();
 

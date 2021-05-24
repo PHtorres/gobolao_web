@@ -1,4 +1,3 @@
-import IJogo from "../models/IJogo";
 import IResposta from "../models/IResposta";
 import ITime from "../models/ITime";
 import apiGoBolao from "./ApiGoBolao";

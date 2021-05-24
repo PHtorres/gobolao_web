@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import IJogo from '../../models/IJogo';
-import ServicePalpite from '../../services/ServicePalpite';
+//import ServicePalpite from '../../services/ServicePalpite';
 import AvatarTime from '../AvatarTime';
 import Texto from '../Texto';
 import CaixaPlacar from './CaixaPlacar';
 import { Container, AreaEsquerda, AreaCentro, AreaDireita } from './styles';
 
-const servicoPalpite = new ServicePalpite();
+//const servicoPalpite = new ServicePalpite();
 interface JogoProps {
     jogo: IJogo;
 }
