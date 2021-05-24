@@ -11,12 +11,15 @@ export default createGlobalStyle`
 body{
     background: #DEE1E6;
     -webkit-font-smoothing: antialiased;
-    display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-body, input, button{
+@media(min-width: 660px) {
+    body {
+    padding: 50px 50px 0 50px;
+    }
+  }
+
+body, input, button, select, option{
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
 }

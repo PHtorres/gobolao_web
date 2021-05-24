@@ -1,5 +1,4 @@
 import React from 'react';
-import LogoGoBolao from '../LogoGoBolao';
 
 import { Container, ListaMenu, ItemMenu, LinkMenu, TituloMenu } from './styles';
 
@@ -19,6 +18,9 @@ const Menu: React.FC = () => {
               </ItemMenu>
               <ItemMenu>
                   <LinkMenu to="/rankings">Rankings</LinkMenu>
+              </ItemMenu>
+              <ItemMenu>
+                  <LinkMenu to="/admin">Admin</LinkMenu>
               </ItemMenu>
           </ListaMenu>
       </Container>
