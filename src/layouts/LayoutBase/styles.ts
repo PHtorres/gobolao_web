@@ -4,5 +4,5 @@ export const Container = styled.div`
   width: 100%;
   background-color: ${({theme}) => theme.corFundo};
   border-radius: 10px;
-  width: 100%;
+  padding-bottom: 30px;
 `;

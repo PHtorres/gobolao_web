@@ -6,10 +6,12 @@ declare module "styled-components" {
         corFundoSite:string;
         corFundo:string;
         corPrimaria:string;
+        corSecundaria:string;
         corFundoSucesso:string;
         corTextoSucesso:string;
         corFundoAlerta:string;
         corTextoAlerta:string;
+        corTextoSecundaria:string;
         corTextoMenu:string;
         corTextoTituloPrimario:string;
         corTextoTituloSecundario:string;

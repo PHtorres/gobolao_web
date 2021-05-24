@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.button`
-        background: ${props => props.theme.corPrimaria};
+        background: ${props => props.theme.corFundoSucesso};
         border-radius: 10px;
         border: 0;
         padding: 10px;
@@ -11,17 +11,16 @@ export const Container = styled.button`
         transition: background-color 1s;
 
         &:hover{
-            background: ${props => shade(0.3, props.theme.corPrimaria)}
+            background: ${props => shade(0.3, props.theme.corFundoSucesso)}
         }
-
         @media(max-width: 415px) {
             padding: 5px;
         }
 `;
 
 export const TextoBotao = styled.span`
-color: ${({ theme }) => theme.corFundo};
+color: ${({ theme }) => theme.corTextoSucesso};
 @media(max-width: 415px) {
     font-size: 12px;
-  }
+   }
 `;
