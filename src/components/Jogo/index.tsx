@@ -47,7 +47,7 @@ const Jogo: React.FC<JogoProps> = ({ jogo }) => {
             return;
         }
 
-        exibirMensagens(notificacoes, 'erro');
+        exibirMensagens(notificacoes || [], 'erro');
     }
 
     return (

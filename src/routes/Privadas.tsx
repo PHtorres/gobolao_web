@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import Boloes from '../pages/Boloes';
 import Home from '../pages/Home';
-import PainelAdministrativo from '../pages/PainelAdministrativo';
 
 const Privadas: React.FC = () => {
 
     return (
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/admin" exact component={PainelAdministrativo} />
+            <Route path="/boloes" exact component={Boloes} />
             <Route path="*" component={Home}/>
         </Switch>
     )

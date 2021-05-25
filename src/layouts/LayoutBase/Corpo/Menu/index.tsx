@@ -22,9 +22,6 @@ const Menu: React.FC = () => {
               <ItemMenu>
                   <LinkMenu to="/rankings">Rankings</LinkMenu>
               </ItemMenu>
-              <ItemMenu>
-                  <LinkMenu to="/admin">Admin</LinkMenu>
-              </ItemMenu>
           </ListaMenu>
       </Container>
   );

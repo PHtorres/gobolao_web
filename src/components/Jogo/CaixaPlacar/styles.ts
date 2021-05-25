@@ -36,6 +36,7 @@ ${
 export const Input = styled.input`
 
 color:${props => props.theme.corTextoSubTitulo};
+font-weight: bold;
 outline: none;
 background-color:transparent;
 border:0;
