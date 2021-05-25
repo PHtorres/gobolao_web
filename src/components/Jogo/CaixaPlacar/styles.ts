@@ -12,7 +12,7 @@ max-width:50px;
 margin-bottom:15px;
 
 @media(max-width: 415px) {
-    max-width:35px;
+    max-width:40px;
   }
 
 `;
@@ -36,6 +36,7 @@ ${
 export const Input = styled.input`
 
 color:${props => props.theme.corTextoSubTitulo};
+font-weight: bold;
 outline: none;
 background-color:transparent;
 border:0;

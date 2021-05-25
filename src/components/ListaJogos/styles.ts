@@ -4,6 +4,9 @@ export const Container = styled.ul`
   margin-top: 20px;
   width: 600px;
   @media(max-width: 750px) {
+    width: 100%;
+  }
+  /* @media(max-width: 750px) {
     width: 500px;
   }
 
@@ -12,8 +15,8 @@ export const Container = styled.ul`
   }
 
   @media(max-width: 415px) {
-    width: 320px;
-  }
+    width: 100%;
+  } */
 `;
 
 export const ItemJogo = styled.li`

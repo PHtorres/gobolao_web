@@ -15,10 +15,20 @@ const CaixaPlacar: React.FC<InputHTMLAttributes<HTMLInputElement>> = ({ ...rest 
         setEstaFocado(false);
     }
 
+    const onNumberOnlyChange = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        const keyCode = event.keyCode || event.which;
+        const keyValue = String.fromCharCode(keyCode);
+        const isValid = new RegExp("[0-9]").test(keyValue);
+        if (!isValid) {
+           event.preventDefault();
+           return;
+        }
+    };
+
     return (
         <Container>
             <Conteudo focado={estaFocado}>
-                <Input {...rest} onFocus={aoFocar} onBlur={aoDesfocar} />
+                <Input {...rest} onFocus={aoFocar} onBlur={aoDesfocar} onKeyPress={onNumberOnlyChange} />
             </Conteudo>
         </Container>
     );

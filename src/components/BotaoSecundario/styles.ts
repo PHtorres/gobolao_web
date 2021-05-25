@@ -14,7 +14,7 @@ export const Container = styled.button`
             background: ${props => shade(0.1, props.theme.corSecundaria)}
         }
         @media(max-width: 415px) {
-            padding: 5px;
+            padding: 3px;
         }
 `;
 

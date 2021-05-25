@@ -15,7 +15,7 @@ export const Container = styled.button`
         }
 
         @media(max-width: 415px) {
-            padding: 5px;
+            padding: 3px;
         }
 `;
 

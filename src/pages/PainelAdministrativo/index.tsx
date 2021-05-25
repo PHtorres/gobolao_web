@@ -55,7 +55,7 @@ const PainelAdministrativo: React.FC = () => {
             return;
           }
 
-          exibirMensagens(notificacoes, 'erro');
+          exibirMensagens(notificacoes || [], 'erro');
         }
       }
     }
