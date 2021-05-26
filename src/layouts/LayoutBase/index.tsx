@@ -8,7 +8,7 @@ const LayoutBase: React.FC = () => {
     return (
         <Container>
             <Cabecalho />
-            <Corpo/>
+            <Corpo />
         </Container>
     );
 }

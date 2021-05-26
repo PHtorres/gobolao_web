@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useState, useContext, useEffect } from 'react';
+import Carregando from '../components/Carregando';
 import apiGoBolao from '../services/ApiGoBolao';
 
 interface IContextoCarregando {
@@ -29,6 +30,7 @@ export const CarregandoProvider: React.FC = ({ children }) => {
     return (
         <ContextoCarregando.Provider value={{ estaCarregando }}>
             {children}
+            <Carregando />
         </ContextoCarregando.Provider>
     );
 }

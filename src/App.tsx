@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import Carregando from './components/Carregando';
 import { AlertaProvider } from './hooks/HAlerta';
 import { CarregandoProvider } from './hooks/HCarregando';
+import { MenuMobileStatusProvider } from './hooks/HMenuMobileStatus';
 import { UsuarioProvider } from './hooks/HUsuario';
 import LayoutBase from './layouts/LayoutBase';
 import GlobalStyles from './styles/global';
@@ -16,9 +16,10 @@ function App() {
         <AlertaProvider>
           <UsuarioProvider>
             <BrowserRouter>
-              <LayoutBase />
+              <MenuMobileStatusProvider>
+                <LayoutBase />
+              </MenuMobileStatusProvider>
               <GlobalStyles />
-              <Carregando />
             </BrowserRouter>
           </UsuarioProvider>
         </AlertaProvider>
