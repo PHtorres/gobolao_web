@@ -13,7 +13,7 @@ body{
     -webkit-font-smoothing: antialiased;
 }
 
-@media(min-width: 660px) {
+@media(min-width: 700px) {
     body {
     padding: 50px 50px 0 50px;
     }
