@@ -1,20 +1,22 @@
 import React from 'react';
 import AreaUsuario from '../../../components/AreaUsuario';
 import LogoGoBolao from '../../../components/LogoGoBolao';
+import { useMenuMobileStatus } from '../../../hooks/HMenuMobileStatus';
 import { useUsuario } from '../../../hooks/HUsuario';
+import Tema from '../../../theme';
 
-import { Container } from './styles';
+import { Container, IconeMenu } from './styles';
 
 const Cabecalho: React.FC = () => {
 
   const { usuario } = useUsuario();
+  const { exibirMenuMobile } = useMenuMobileStatus();
 
   return (
     <Container>
       <LogoGoBolao />
-      {
-        usuario.logado && <AreaUsuario />
-      }
+      {usuario.logado && <AreaUsuario />}
+      <IconeMenu onClick={exibirMenuMobile} size={35} color={Tema.corTextoMenu}/>
     </Container>
   );
 }
