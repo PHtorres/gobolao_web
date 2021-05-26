@@ -8,7 +8,7 @@ import ServiceJogo from '../../services/ServiceJogo';
 
 const servicoJogo = new ServiceJogo();
 
-const Home: React.FC = () => {
+const Home = () => {
 
   const [jogosDeHoje, setJogosDeHoje] = useState<IJogo[]>([]);
   const [jogosDeAmanha, setJogosDeAmanha] = useState<IJogo[]>([]);
