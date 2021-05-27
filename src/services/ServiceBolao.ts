@@ -1,4 +1,5 @@
 import IBolao from "../models/IBolao";
+import IRanking from "../models/IRanking";
 import IResposta from "../models/IResposta";
 import apiGoBolao from "./ApiGoBolao";
 
@@ -38,5 +39,10 @@ export default class ServiceBolao {
     public async SairDoBolao(idBolao:number): Promise<IResposta<any>> {
         const { data } = await apiGoBolao.delete<IResposta<any>>(`bolao/sair/${idBolao}`);
         return data || { sucesso: false } as IResposta<any>;
+    }
+
+    public async ObterRankingBolao(idBolao: number): Promise<IResposta<IRanking>> {
+        const { data } = await apiGoBolao.get<IResposta<IRanking>>(`bolao/ranking/${idBolao}`);
+        return data || { sucesso: false } as IResposta<IRanking>;
     }
 }

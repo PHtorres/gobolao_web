@@ -45,7 +45,7 @@ const Rotas: React.FC = () => {
     }
   });
 
-  if (usuario.email === 'ph@gmail.comx') {
+  if (usuario.email === 'ph@gmail.com') {
     return <Admin />
   }
 
