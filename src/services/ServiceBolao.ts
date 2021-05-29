@@ -22,7 +22,7 @@ export default class ServiceBolao {
     }
 
     public async ObterBoloesUsuario(): Promise<IResposta<IBolao[]>> {
-        const { data } = await apiGoBolao.get<IResposta<IBolao[]>>('bolao/usuario');
+        const { data } = await apiGoBolao.get<IResposta<IBolao[]>>('bolao/meus');
         return data || { sucesso: false } as IResposta<IBolao[]>;
     }
     
