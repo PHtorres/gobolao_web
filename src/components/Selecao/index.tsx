@@ -30,7 +30,6 @@ const Selecao: React.FC<SelecaoProps> = ({ label, Icone, opcoes, selecionarOpcao
             <Conteudo focado={selecionado > 0}>
                 <Icone size={30} color={selecionado > 0 ? Tema.corPrimaria : Tema.corBordaInput} />
                 <Select onChange={(e) => aoSelecionar(e)}>
-                    <Option value={0} selected>Nenhum</Option>
                     {opcoes.map(item => (
                         <Option
                             selected={selecionado === item.id}

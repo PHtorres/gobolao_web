@@ -7,4 +7,5 @@ export default interface IBolao {
     nomeImagemAvatarBolao: string;
     nomeImagemAvatarCampeonato: string;
     souCriadorBolao: boolean;
+    paticipoBolao:boolean;
 }

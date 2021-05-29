@@ -43,5 +43,8 @@ margin-left:5px;
 
 export const Option = styled.option`
 color:${props => props.theme.corTextoMenu};
+&:hover{
+    background-color: red;
+}
 `;
 

@@ -17,6 +17,12 @@ export const Container = styled.div`
 
 `;
 
+const Bloco = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-width: 20%;
+`;
+
 export const AreaBlocos = styled(Link)`
   display: flex;
   justify-content: space-between;
@@ -24,24 +30,21 @@ export const AreaBlocos = styled(Link)`
   text-decoration: none;
 `;
 
-export const BlocoEsquerda = styled.div`
-  display: flex;
-  flex-direction: column;
+export const BlocoEsquerda = styled(Bloco)`
   align-items: flex-start;
 `;
 
-export const BlocoCentro = styled.div`
-  display: flex;
-  flex-direction: column;
+export const BlocoCentro = styled(Bloco)`
   align-items: center;
 `;
 
-export const BlocoDireita = styled.div`
-  display: flex;
-  flex-direction: column;
+export const BlocoDireita = styled(Bloco)`
   align-items: flex-end;
 `;
 
 export const AreaBotoes = styled.div`
-
+min-width: 20%;
+/* @media(max-width: 1150px) {
+  width: 10%;
+  } */
 `;

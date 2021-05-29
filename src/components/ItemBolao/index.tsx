@@ -69,14 +69,16 @@ const ItemBolao: React.FC<ItemBolaoProps> = ({ bolao }) => {
                     </BlocoDireita>
                 </AreaBlocos>
                 <AreaBotoes>
+                    {bolao.souCriadorBolao && <BotaoSucesso>Meu</BotaoSucesso>}
+                    {bolao.paticipoBolao && !bolao.souCriadorBolao && <BotaoSucesso>Já participo</BotaoSucesso>}
                     {solicitacaoEnviada && <BotaoSucesso>Solicitação enviada!</BotaoSucesso>}
                     {participarEnviada && <BotaoSucesso>Bem-vindo!</BotaoSucesso>}
                     {!participarEnviada &&
-                        !bolao.souCriadorBolao &&
+                        !bolao.souCriadorBolao && !bolao.paticipoBolao &&
                         bolao.privacidade === 'Publico'
                         && <BotaoPrimario onClick={participarBolao}>Participar</BotaoPrimario>}
                     {!solicitacaoEnviada &&
-                        !bolao.souCriadorBolao &&
+                        !bolao.souCriadorBolao && !bolao.paticipoBolao &&
                         bolao.privacidade === 'Privado'
                         && <BotaoSecundario onClick={solicitarParticipar}>Solicitar participar</BotaoSecundario>}
                 </AreaBotoes>
