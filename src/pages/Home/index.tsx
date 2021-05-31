@@ -37,14 +37,13 @@ const Home = () => {
 
   return (
     <ContainerPadraoCentralizado>
-      <Titulo>Jogos para palpitar</Titulo>
       {jogosDeHoje.length > 0 &&
         <Titulo>Jogos de hoje</Titulo>}
       <ListaJogos jogos={jogosDeHoje} />
       {jogosDeAmanha.length > 0 &&
         <Titulo>Jogos de amanhã</Titulo>}
       <ListaJogos jogos={jogosDeAmanha} />
-      <Titulo>Todos</Titulo>
+      <Titulo>Todos os jogos</Titulo>
       <ListaJogos jogos={todosJogos} />
     </ContainerPadraoCentralizado>
   );

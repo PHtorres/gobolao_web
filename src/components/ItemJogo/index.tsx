@@ -19,28 +19,29 @@ import {
     LinhaBotaoEnviarPalpite
 } from './styles';
 import { useAlerta } from '../../hooks/HAlerta';
+import BotaoPrimarioLink from '../BotaoPrimarioLink';
 
 const servicoPalpite = new ServicePalpite();
 interface JogoProps {
     jogo: IJogo;
 }
 
-const Jogo: React.FC<JogoProps> = ({ jogo }) => {
+const ItemJogo: React.FC<JogoProps> = ({ jogo }) => {
 
-    const {exibirMensagem, exibirMensagens} = useAlerta();
+    const { exibirMensagem, exibirMensagens } = useAlerta();
     const [palpiteHabilitado, setPalpiteHabilitado] = useState(false);
     const [usuarioTemPalpite, setUsuarioTemPalpite] = useState(jogo.usuarioTemPalpite);
     const [placarMandante, setPlacarMandante] = useState(0);
     const [placarVisitante, setPlacarVisitante] = useState(0);
 
     const enviarPalpite = async () => {
-        const { sucesso, notificacoes} = await servicoPalpite.CriarPalpite({
+        const { sucesso, notificacoes } = await servicoPalpite.CriarPalpite({
             idJogo: jogo.id,
             placarMandantePalpite: placarMandante,
             placarVisitantePalpite: placarVisitante
         });
 
-        if(sucesso){
+        if (sucesso) {
             setPalpiteHabilitado(false);
             setUsuarioTemPalpite(true);
             exibirMensagem('Palpite criado com sucesso!', 'sucesso');
@@ -50,17 +51,24 @@ const Jogo: React.FC<JogoProps> = ({ jogo }) => {
         exibirMensagens(notificacoes || [], 'erro');
     }
 
+    const botaoFazerPalpite = () => !usuarioTemPalpite && !palpiteHabilitado && !jogo.jogoIniciado;
+    const botaoEnviarPalpite = () => !usuarioTemPalpite && palpiteHabilitado && !jogo.jogoIniciado;
+    const botaoPalpiteEnviado = () => usuarioTemPalpite && !jogo.jogoIniciado;
+    const botaoPalpitesGalera = () => jogo.jogoIniciado;
+    const areaPlacar = () => !usuarioTemPalpite && palpiteHabilitado && !jogo.jogoIniciado;
+
     return (
         <Container>
             <LinhaInfo>
-                <Texto>{utils.DataCurtaComHora(new Date(jogo.dataHora))} - {jogo.nomeCampeonato} - {jogo.fase}</Texto>
+                <Texto>{utils.DataCurtaComHoraMinuto(new Date(jogo.dataHora))} - {jogo.nomeCampeonato} - {jogo.fase}</Texto>
             </LinhaInfo>
             <LinhaJogo>
                 <AreaEsquerda>
                     <AvatarTime nomeImagem={jogo.nomeImagemAvatarMandante} />
                     <Texto>{jogo.mandante}</Texto>
                 </AreaEsquerda>
-                {!usuarioTemPalpite && palpiteHabilitado &&
+
+                {areaPlacar() &&
                     <AreaPlacar>
                         <CaixaPlacar
                             value={placarMandante}
@@ -70,25 +78,41 @@ const Jogo: React.FC<JogoProps> = ({ jogo }) => {
                             value={placarVisitante}
                             onChange={(e) => setPlacarVisitante(Number(e.target.value))} />
                     </AreaPlacar>}
-                {!usuarioTemPalpite && !palpiteHabilitado &&
+
+                {botaoFazerPalpite() &&
                     <AreaStatusPalpite>
-                        <BotaoSecundario onClick={() => setPalpiteHabilitado(true)}>Fazer palpite</BotaoSecundario>
+                        <BotaoSecundario onClick={() => setPalpiteHabilitado(true)}>
+                            Fazer palpite
+                        </BotaoSecundario>
                     </AreaStatusPalpite>}
-                {usuarioTemPalpite &&
+
+                {botaoPalpiteEnviado() &&
                     <AreaStatusPalpite>
                         <BotaoSucesso>Palpite enviado!</BotaoSucesso>
                     </AreaStatusPalpite>}
+
+                {botaoPalpitesGalera() &&
+                    <AreaStatusPalpite>
+                        <BotaoPrimarioLink to={`palpites/jogo/${jogo.id}`}>
+                            Palpites da galera
+                        </BotaoPrimarioLink>
+                    </AreaStatusPalpite>}
+
                 <AreaDireita>
                     <Texto>{jogo.visitante}</Texto>
                     <AvatarTime nomeImagem={jogo.nomeImagemAvatarVisitante} />
                 </AreaDireita>
             </LinhaJogo>
-            <LinhaBotaoEnviarPalpite>
-                {!usuarioTemPalpite && palpiteHabilitado &&
-                    <BotaoPrimario onClick={enviarPalpite}>Enviar palpite</BotaoPrimario>}
-            </LinhaBotaoEnviarPalpite>
+
+
+            {botaoEnviarPalpite() &&
+                <LinhaBotaoEnviarPalpite>
+                    <BotaoPrimario onClick={enviarPalpite}>Enviar palpite</BotaoPrimario>
+                </LinhaBotaoEnviarPalpite>}
+
+
         </Container>
     );
 }
 
-export default Jogo;
+export default ItemJogo;

@@ -10,4 +10,5 @@ export default interface IJogo {
     placarVisitante: number;
     fase: string;
     usuarioTemPalpite: boolean;
+    jogoIniciado:boolean;
 }

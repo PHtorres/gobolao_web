@@ -71,6 +71,8 @@ const PainelAdministrativo: React.FC = () => {
     const { conteudo, sucesso } = await servicoTime.ObterTimes();
     if (sucesso) {
       setTimes(conteudo);
+      setIdMandante(conteudo[0]?.id);
+      setIdVisitante(conteudo[0]?.id);
     }
   }
 
@@ -78,6 +80,7 @@ const PainelAdministrativo: React.FC = () => {
     const { conteudo, sucesso } = await servicoCampeonato.ObterCampeonatos();
     if (sucesso) {
       setCampeonatos(conteudo);
+      setIdCampeonato(conteudo[0]?.id);
     }
   }
 
