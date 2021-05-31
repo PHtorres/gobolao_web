@@ -45,4 +45,9 @@ export default class ServiceBolao {
         const { data } = await apiGoBolao.get<IResposta<IRanking>>(`bolao/ranking/${idBolao}`);
         return data || { sucesso: false } as IResposta<IRanking>;
     }
+
+    public async ObterRankings(): Promise<IResposta<IRanking[]>> {
+        const { data } = await apiGoBolao.get<IResposta<IRanking[]>>('bolao/ranking');
+        return data || { sucesso: false } as IResposta<IRanking[]>;
+    }
 }

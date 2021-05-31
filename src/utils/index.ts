@@ -42,8 +42,8 @@ const utils = {
         return dataFormatada;
     },
 
-    DataCurtaComHora(data: Date): string {
-        const dataFormatada = data.toLocaleTimeString('pt-br', { day: 'numeric', month: 'short', hour:'2-digit' });
+    DataCurtaComHoraMinuto(data: Date): string {
+        const dataFormatada = data.toLocaleTimeString('pt-br', { day: 'numeric', month: 'short', hour:'2-digit', minute:'2-digit' });
         return dataFormatada + 'h';
     },
 

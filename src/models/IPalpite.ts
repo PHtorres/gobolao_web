@@ -1,11 +1,14 @@
 export default interface IPalpite {
     id: number;
     idJogo: number;
+    idUsuarioPalpite: number;
+    nomeUsuarioPalpite: string;
     mandante: string;
     visitante: string;
     nomeImagemAvatarMandante: string;
     nomeImagemAvatarVisitante: string;
-    dataHora: Date;
+    dataHoraPalpite: Date;
+    dataHoraJogo: Date;
     placarMandantePalpite: number;
     placarVisitantePalpite: number;
     placarMandanteReal: number;

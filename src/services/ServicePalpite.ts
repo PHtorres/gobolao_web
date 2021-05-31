@@ -11,13 +11,28 @@ interface CriarPalpiteProps{
 
 export default class ServicePalpite{
 
-    public async ObterPalpites():Promise<IResposta<IPalpite[]>>{
-        const {data} = await apiGoBolao.get<IResposta<IPalpite[]>>('palpite');
-        return data || {} as IResposta<IPalpite[]>;
+    public async ObterPalpitesAbertos():Promise<IResposta<IPalpite[]>>{
+        const {data} = await apiGoBolao.get<IResposta<IPalpite[]>>('palpite/abertos');
+        return data || {sucesso:false} as IResposta<IPalpite[]>;
+    }
+
+    public async ObterPalpitesFinalizados():Promise<IResposta<IPalpite[]>>{
+        const {data} = await apiGoBolao.get<IResposta<IPalpite[]>>('palpite/finalizados');
+        return data || {sucesso:false} as IResposta<IPalpite[]>;
+    }
+
+    public async ObterPalpitesJogo(idJogo:number):Promise<IResposta<IPalpite[]>>{
+        const {data} = await apiGoBolao.get<IResposta<IPalpite[]>>(`palpite/jogo/${idJogo}`);
+        return data || {sucesso:false} as IResposta<IPalpite[]>;
     }
 
     public async CriarPalpite(palpite:CriarPalpiteProps):Promise<IResposta<any>>{
         const {data} = await apiGoBolao.post<IResposta<any>>('palpite', palpite);
-        return data || {} as IResposta<any>;
+        return data || {sucesso:false} as IResposta<any>;
+    }
+
+    public async ExcluirPalpite(idPalpite:number):Promise<IResposta<any>>{
+        const {data} = await apiGoBolao.delete<IResposta<any>>(`palpite/${idPalpite}`);
+        return data || {sucesso:false} as IResposta<any>;
     }
 }
