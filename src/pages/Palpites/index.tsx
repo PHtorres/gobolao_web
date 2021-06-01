@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import ItemPalpite from '../../components/ItemPalpite';
+import Texto from '../../components/Texto';
 import Titulo from '../../components/Titulo';
 import IPalpite from '../../models/IPalpite';
 import ServicePalpite from '../../services/ServicePalpite';
@@ -29,9 +30,14 @@ const Palpites = () => {
         obterPalpitesFinalizados();
     }, []);
 
+    const semPalpites = useMemo((): boolean => {
+        return palpitesAbertos.length === 0 && palpitesFinalizados.length === 0;
+    }, [palpitesAbertos, palpitesFinalizados]);
+
     return (
         <ContainerPadraoCentralizado>
-            {palpitesAbertos.length > 0 && <Titulo>Palpites abertos</Titulo>}        
+            {semPalpites && <Texto>Você ainda não tem palpites. Vá para os Jogos e envie alguns!</Texto>}
+            {palpitesAbertos.length > 0 && <Titulo>Palpites abertos</Titulo>}
             <ListaPalpites>
                 {palpitesAbertos.map(palpite => <ItemPalpite key={palpite.id} palpite={palpite} />)}
             </ListaPalpites>

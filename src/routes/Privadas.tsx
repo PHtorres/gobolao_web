@@ -9,6 +9,7 @@ import PalpitesJogo from '../pages/PalpitesJogo';
 import PerfilBolao from '../pages/PerfilBolao';
 import PesquisaBolao from '../pages/PesquisaBolao';
 import Rankings from '../pages/Rankings';
+import SolicitacoesBolao from '../pages/SolicitacoesBolao';
 
 const Privadas: React.FC = () => {
 
@@ -20,6 +21,7 @@ const Privadas: React.FC = () => {
             <Route path="/boloes/pesquisa" component={PesquisaBolao} />
             <Route path="/boloes/criar" component={CriarBolao} />
             <Route path="/boloes/perfil/:idBolao+" component={PerfilBolao}/>
+            <Route path="/boloes/solicitacoes/:idBolao+" component={SolicitacoesBolao}/>
             <Route path="/palpites" exact component={Palpites} />
             <Route path="/palpites/jogo/:idJogo+" component={PalpitesJogo}/>
             <Route path="/rankings" component={Rankings} />

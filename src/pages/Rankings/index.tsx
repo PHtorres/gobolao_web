@@ -27,7 +27,7 @@ const Rankings = () => {
         <ContainerPadrao>
             <Titulo>Rankings</Titulo>
             <AreaRankings>
-                {rankings.map(ranking => <Ranking ranking={ranking} />)}
+                {rankings.map(ranking => <Ranking key={ranking.idBolao} ranking={ranking} />)}
             </AreaRankings>
         </ContainerPadrao>
     );
