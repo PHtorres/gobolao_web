@@ -10,7 +10,7 @@ interface IContextoUsuario {
     usuario: IUsuario;
     logar(email: string, senha: string): Promise<void>;
     sair(): void;
-    criar(criarUsuarioProps:ICriarUsuario):void;
+    criar(criarUsuarioProps: ICriarUsuario): void;
     alterar(nome: string, email: string): void;
 }
 
@@ -27,7 +27,7 @@ export const UsuarioProvider: React.FC = ({ children }) => {
         const resultadoStorage = storage.PegarUsuario();
         return resultadoStorage;
     });
- 
+
     const adicionarTokenNaApi = () => {
         const tokenStorage = storage.PegarTokenUsuario();
         if (tokenStorage.length > 0) {
@@ -35,20 +35,20 @@ export const UsuarioProvider: React.FC = ({ children }) => {
         }
     }
 
-    adicionarTokenNaApi(); 
+    adicionarTokenNaApi();
 
     const logar = useCallback(async (email: string, senha: string) => {
 
-        if(email.length === 0 || senha.length === 0){
+        if (email.length === 0 || senha.length === 0) {
             exibirMensagem('E-mail e senha precisam ser preenchidos.', 'erro');
             return;
         }
 
-        const {resposta} = await servicoUsuario.Autenticar(email, senha);
+        const { resposta } = await servicoUsuario.Autenticar(email, senha);
         if (resposta?.conteudo?.logado) {
             adicionarTokenNaApi();
             setUsuario(resposta.conteudo);
-            return;   
+            return;
         }
 
         if (resposta?.notificacoes) {
@@ -62,16 +62,16 @@ export const UsuarioProvider: React.FC = ({ children }) => {
         setUsuario({} as IUsuario);
     }, []);
 
-    const criar = useCallback(async (criarUsuarioProps:ICriarUsuario) => {
+    const criar = useCallback(async (criarUsuarioProps: ICriarUsuario) => {
 
-        const resultado = await servicoUsuario.CriarUsuario(criarUsuarioProps);
-        if (resultado.sucesso) {
+        const { sucesso, notificacoes } = await servicoUsuario.CriarUsuario(criarUsuarioProps);
+        if (sucesso) {
             exibirMensagem(`Bem-vindo ao GoBolão, ${criarUsuarioProps.apelido}`, 'sucesso');
             logar(criarUsuarioProps.email, criarUsuarioProps.senha);
             return;
         }
 
-        exibirMensagens(resultado?.notificacoes, 'erro');
+        exibirMensagens(notificacoes || [], 'erro');
 
     }, [exibirMensagens, exibirMensagem, logar]);
 
@@ -84,7 +84,7 @@ export const UsuarioProvider: React.FC = ({ children }) => {
                     id: atual.id,
                     email: resultado.conteudo.email,
                     apelido: resultado.conteudo.apelido,
-                    nomeImagemAvatar:resultado.conteudo.nomeImagemAvatar,
+                    nomeImagemAvatar: resultado.conteudo.nomeImagemAvatar,
                     logado: true
                 }
             });

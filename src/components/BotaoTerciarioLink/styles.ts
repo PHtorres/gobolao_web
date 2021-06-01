@@ -8,7 +8,7 @@ export const Container = styled(Link)`
         border: 0;
         padding: 10px;
         width: 100%;
-        margin: 15px 10px 15px 0;
+        margin: 15px 0;
         text-decoration: none;
         display: flex;
         align-items: center;
