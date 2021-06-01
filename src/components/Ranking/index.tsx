@@ -82,7 +82,7 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
                     </BlocoDireita>
                 </CabecalhoClassificacao>
                 {ranking.classificacao?.map((item, index) => (
-                    <ItemClassificacao corLighten={pegarCorLighten(index + 1)}>
+                    <ItemClassificacao key={index} corLighten={pegarCorLighten(index + 1)}>
                         <BlocoColocacao>
                             <TextoNumeroColocacao cor={corNumeroColocacao(index + 1)}>
                                 {index + 1}
