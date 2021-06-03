@@ -12,6 +12,7 @@ interface IContextoUsuario {
     sair(): void;
     criar(criarUsuarioProps: ICriarUsuario): void;
     alterar(nome: string, email: string): void;
+    alterarAvatar(arquivos: FileList): void;
 }
 
 const storage = new ServiceStorage();
@@ -97,9 +98,19 @@ export const UsuarioProvider: React.FC = ({ children }) => {
 
     }, [exibirMensagens, exibirMensagem, usuario.id]);
 
+    const alterarAvatar = useCallback(async (arquivos: FileList) => {
+        const { conteudo, sucesso, notificacoes } = await servicoUsuario.AlterarAvatarUsuario(arquivos);
+        if (sucesso) {
+            setUsuario(conteudo);
+            return;
+        }
+
+        exibirMensagens(notificacoes || [], 'erro');
+    }, [exibirMensagens]);
+
 
     return (
-        <ContextoUsuario.Provider value={{ usuario, logar, sair, criar, alterar }}>
+        <ContextoUsuario.Provider value={{ usuario, logar, sair, criar, alterar, alterarAvatar }}>
             {children}
         </ContextoUsuario.Provider>
     );

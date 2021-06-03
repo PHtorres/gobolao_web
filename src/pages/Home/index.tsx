@@ -3,6 +3,7 @@ import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentral
 import ListaJogos from '../../components/ListaJogos';
 import Titulo from '../../components/Titulo';
 import { useSugestao } from '../../hooks/HSugestao';
+import { useUsuario } from '../../hooks/HUsuario';
 import IJogo from '../../models/IJogo';
 import ServiceBolao from '../../services/ServiceBolao';
 import ServiceJogo from '../../services/ServiceJogo';
@@ -14,6 +15,7 @@ const servicoBolao = new ServiceBolao();
 const Home = () => {
 
   const { enviarSugestao } = useSugestao();
+  const {usuario} = useUsuario();
   const [jogosDeHoje, setJogosDeHoje] = useState<IJogo[]>([]);
   const [jogosDeAmanha, setJogosDeAmanha] = useState<IJogo[]>([]);
   const [todosJogos, setTodosJogos] = useState<IJogo[]>([]);
@@ -37,6 +39,18 @@ const Home = () => {
       }
     }
 
+    const checarAvatar = () => {
+      if(usuario.nomeImagemAvatar.length === 0){
+        enviarSugestao({
+          titulo: `Tá sem foto? Aí não, ${usuario.apelido}!`,
+          descricao: 'Escolha uma foto pro seu avatar!',
+          rotaConfirma: '/me/avatar',
+          textoConfirma: 'Escolher avatar',
+          textoCancela: 'Depois'
+        });
+      }
+    }
+
     const checarBoloes = async () => {
       const { sucesso, conteudo } = await servicoBolao.ObterBoloesUsuario();
       if (sucesso) {
@@ -48,12 +62,17 @@ const Home = () => {
             textoConfirma: 'Pesquisar ou criar bolão',
             textoCancela: 'Depois'
           });
+
+          return;
         }
+
+        checarAvatar();
       }
     };
+
     obterJogos();
     checarBoloes();
-  }, [enviarSugestao]);
+  }, [enviarSugestao, usuario]);
 
   return (
     <ContainerPadraoCentralizado>

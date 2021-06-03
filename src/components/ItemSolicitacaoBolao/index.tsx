@@ -12,6 +12,7 @@ import TextoDestaque from '../TextoDestaque';
 import { IBolaoSolicitacao } from '../../models/IBolaoSolicitacao';
 import ServiceBolaoSolicitacao from '../../services/ServiceBolaoSolicitacao';
 import BotaoSucesso from '../BotaoSucesso';
+import AvatarUsuario from '../AvatarUsuario';
 
 const servicoBolaoSolicitacao = new ServiceBolaoSolicitacao();
 
@@ -52,6 +53,7 @@ const ItemSolicitacaoBolao: React.FC<IItemSolicitacaoBolaoProps> = ({ solicitaca
         <Container>
             <LinhaSolicitacao>
                 <AreaEsquerda>
+                <AvatarUsuario nomeImagemAvatar={solicitacao.nomeImagemUsuarioSolicitante}/>
                     <TextoDestaque>{solicitacao.apelidoUsuarioSolicitante}</TextoDestaque>
                 </AreaEsquerda>
                 <AreaDireita>

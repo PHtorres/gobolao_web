@@ -61,7 +61,7 @@ const PerfilBolao = () => {
                     {
                         bolao.souCriadorBolao &&
                         <BotaoSecundarioLink to={`/boloes/solicitacoes/${bolao.idBolao}`}>
-                            Solicitações
+                            Solicitações ({bolao.quantidadeSolicitacoesAbertas})
                         </BotaoSecundarioLink>
                     }
                     <BotaoTerciario onClick={linkParaCompartilhar}>Link para compartilhar</BotaoTerciario>

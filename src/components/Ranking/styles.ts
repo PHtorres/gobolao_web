@@ -41,6 +41,8 @@ const Bloco = styled.div`
 display: flex;
 padding: 5px 2px;
 width: 25%;
+gap:10px;
+align-items: center;
 `;
 
 export const BlocoEsquerda = styled(Bloco)`
@@ -56,7 +58,7 @@ justify-content: center;
 `;
 
 export const BlocoColocacao = styled(BlocoEsquerda)`
-width: 10%;
+width: 15px;
 `;
 
 interface TextoNumeroColocacaoProps{

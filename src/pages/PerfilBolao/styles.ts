@@ -15,4 +15,5 @@ export const AreaBotoesCabecalho = styled.div`
   width: 100%;
   max-width: 450px;
   align-items: center;
+  gap: 5px;
 `;

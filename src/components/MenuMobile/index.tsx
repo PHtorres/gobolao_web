@@ -7,9 +7,11 @@ import AreaUsuario from '../AreaUsuario';
 import LogoGoBolao from '../LogoGoBolao';
 
 import { Container, CabecalhoMenuMobile, TituloMenu, ListaMenu, ItemMenu, LinkMenu } from './styles';
+import { useUsuario } from '../../hooks/HUsuario';
 
 const MenuMobile: React.FC = () => {
 
+    const {sair} = useUsuario();
     const {esconderMenuMobile} = useMenuMobileStatus();
     const history = useHistory();
     useEffect(() => {
@@ -41,6 +43,9 @@ const MenuMobile: React.FC = () => {
                 </ItemMenu>
                 <ItemMenu>
                     <LinkMenu to="/rankings">Rankings</LinkMenu>
+                </ItemMenu>
+                <ItemMenu onClick={sair}>
+                    <LinkMenu to="/">Sair</LinkMenu>
                 </ItemMenu>
             </ListaMenu>
         </Container>

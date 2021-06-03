@@ -4,12 +4,16 @@ import IResultadoAutenticacao from "../models/IResultadoAutenticacao";
 import IUsuario from "../models/IUsuario";
 import apiGoBolao from "./ApiGoBolao";
 import ServiceStorage from "./ServiceStorage";
+import ServiceUploadImagem from "./ServiceUploadImagem";
 export default class ServiceUsuario {
 
     private storage: ServiceStorage;
+    private uploadImagem:ServiceUploadImagem;
     constructor() {
         this.storage = new ServiceStorage();
+        this.uploadImagem = new ServiceUploadImagem();
     }
+
     public async Autenticar(email: string, senha: string): Promise<IResultadoAutenticacao> {
 
         const { data } = await apiGoBolao.post<IResultadoAutenticacao>('Autenticacao', { email, senha });
@@ -44,6 +48,24 @@ export default class ServiceUsuario {
         }
 
         return data || {} as IResposta<IUsuario>;
+    }
+
+    public async AlterarAvatarUsuario(arquivos:FileList):Promise<IResposta<IUsuario>>{
+
+        const {sucesso, nomeImagem} = await this.uploadImagem.EnviarImagem(arquivos);
+        if(sucesso){
+            const {data} = await apiGoBolao.patch<IResposta<IUsuario>>('usuario/avatar', {
+                nomeImagemAvatar:nomeImagem
+            });
+            if(data?.sucesso){
+                data.conteudo.logado = true;
+                this.storage.GuardarUsuario(data.conteudo);
+            }
+
+            return data || {sucesso:false} as IResposta<IUsuario>;
+        }
+        
+        return {sucesso:false} as IResposta<IUsuario>;
     }
 
     // public async AlterarSenhaUsuario(id: number, 
