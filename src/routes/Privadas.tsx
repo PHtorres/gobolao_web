@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Boloes from '../pages/Boloes';
 import CriarBolao from '../pages/CriarBolao';
+import EnviarAvatarUsuario from '../pages/EnviarAvatarUsuario';
 import Home from '../pages/Home';
 import Jogos from '../pages/Jogos';
 import Palpites from '../pages/Palpites';
@@ -25,6 +26,7 @@ const Privadas: React.FC = () => {
             <Route path="/palpites" exact component={Palpites} />
             <Route path="/palpites/jogo/:idJogo+" component={PalpitesJogo}/>
             <Route path="/rankings" component={Rankings} />
+            <Route path="/me/avatar" component={EnviarAvatarUsuario} />
             <Route path="*" component={Home}/>
         </Switch>
     )

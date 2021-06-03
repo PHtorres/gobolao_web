@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useState, useContext, useEffect } from 'react';
+import React, { createContext, useCallback, useState, useContext } from 'react';
 import Carregando from '../components/Carregando';
 import apiGoBolao from '../services/ApiGoBolao';
 
@@ -23,9 +23,11 @@ export const CarregandoProvider: React.FC = ({ children }) => {
         });
     }, []);
 
-    useEffect(() => {
-        pegarRequisicoesApi();
-    }, [pegarRequisicoesApi]);
+    pegarRequisicoesApi();
+
+    // useEffect(() => {
+    //     pegarRequisicoesApi();
+    // }, [pegarRequisicoesApi]);
 
     return (
         <ContextoCarregando.Provider value={{ estaCarregando }}>

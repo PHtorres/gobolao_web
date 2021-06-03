@@ -6,6 +6,7 @@ export default interface IBolao {
     privacidade: 'Privado' | 'Publico';
     nomeImagemAvatarBolao: string;
     nomeImagemAvatarCampeonato: string;
+    quantidadeSolicitacoesAbertas:number;
     souCriadorBolao: boolean;
     paticipoBolao:boolean;
 }

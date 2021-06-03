@@ -31,7 +31,7 @@ const Boloes = () => {
                 <Titulo>Meus Bolões</Titulo>
                 <AreaBotoes>
                     <BotaoLink to="/boloes/pesquisa">Pesquisar bolões</BotaoLink>
-                    <BotaoPrimarioLink to="/boloes/criar">Novo Bolão</BotaoPrimarioLink>
+                    <BotaoPrimarioLink to="/boloes/criar">Criar Bolão</BotaoPrimarioLink>
                 </AreaBotoes>
             </Cabecalho>
             <AreaBoloes>

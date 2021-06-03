@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { AlertaProvider } from './hooks/HAlerta';
 import { CarregandoProvider } from './hooks/HCarregando';
 import { MenuMobileStatusProvider } from './hooks/HMenuMobileStatus';
+import { SugestaoProvider } from './hooks/HSugestao';
 import { UsuarioProvider } from './hooks/HUsuario';
 import LayoutBase from './layouts/LayoutBase';
 import GlobalStyles from './styles/global';
@@ -16,9 +17,11 @@ function App() {
         <AlertaProvider>
           <UsuarioProvider>
             <BrowserRouter>
-              <MenuMobileStatusProvider>
-                <LayoutBase />
-              </MenuMobileStatusProvider>
+              <SugestaoProvider>
+                <MenuMobileStatusProvider>
+                  <LayoutBase />
+                </MenuMobileStatusProvider>
+              </SugestaoProvider>
               <GlobalStyles />
             </BrowserRouter>
           </UsuarioProvider>

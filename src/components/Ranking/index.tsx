@@ -19,6 +19,7 @@ import {
     BlocoColocacao,
     TextoNumeroColocacao
 } from './styles';
+import AvatarUsuario from '../AvatarUsuario';
 
 interface RankingProps {
     ranking: IRanking;
@@ -89,6 +90,7 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
                             </TextoNumeroColocacao>
                         </BlocoColocacao>
                         <BlocoEsquerda>
+                            <AvatarUsuario nomeImagemAvatar={item.nomeImagemAvatarUsuario}/>
                             <TextoSecundario>{item.apelidoUsuario}</TextoSecundario>
                         </BlocoEsquerda>
                         <BlocoCentro>

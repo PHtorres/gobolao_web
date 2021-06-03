@@ -1,6 +1,7 @@
 
 interface Classificacao {
     apelidoUsuario: string;
+    nomeImagemAvatarUsuario:string;
     pontos: number;
     quantidadePalpites: number;
 }

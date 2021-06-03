@@ -1,17 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useUsuario } from '../../hooks/HUsuario';
-import Tema from '../../theme';
+import AvatarUsuario from '../AvatarUsuario';
 import Texto from '../Texto';
-import { Container, IconeSairUsuario } from './styles';
+import { Container } from './styles';
 
 const AreaUsuario: React.FC = () => {
 
-  const { usuario, sair } = useUsuario();
+  const { usuario } = useUsuario();
 
   return (
     <Container>
       <Texto>{usuario.apelido}</Texto>
-      <IconeSairUsuario color={Tema.corBordaInput} size={35} onClick={sair}/>
+      <Link to='/me/avatar'>
+        <AvatarUsuario nomeImagemAvatar={usuario.nomeImagemAvatar} />
+      </Link>
     </Container>
   );
 }
