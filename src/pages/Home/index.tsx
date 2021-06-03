@@ -18,13 +18,13 @@ const Home = () => {
   const {usuario} = useUsuario();
   const [jogosDeHoje, setJogosDeHoje] = useState<IJogo[]>([]);
   const [jogosDeAmanha, setJogosDeAmanha] = useState<IJogo[]>([]);
-  const [todosJogos, setTodosJogos] = useState<IJogo[]>([]);
+  const [jogosFuturos, setJogosFuturos] = useState<IJogo[]>([]);
 
   useEffect(() => {
     const obterJogos = async () => {
       const resultadoJogosDeHoje = await servicoJogo.ObterJogosDeHoje();
       const resultadoJogosDeAmanha = await servicoJogo.ObterJogosDeAmanha();
-      const resultadoTodosJogos = await servicoJogo.ObterJogos();
+      const resultadoJogosFuturos = await servicoJogo.ObterJogosFuturos();
 
       if (resultadoJogosDeHoje.sucesso) {
         setJogosDeHoje(resultadoJogosDeHoje.conteudo);
@@ -34,8 +34,8 @@ const Home = () => {
         setJogosDeAmanha(resultadoJogosDeAmanha.conteudo);
       }
 
-      if (resultadoTodosJogos.sucesso) {
-        setTodosJogos(resultadoTodosJogos.conteudo);
+      if (resultadoJogosFuturos.sucesso) {
+        setJogosFuturos(resultadoJogosFuturos.conteudo);
       }
     }
 
@@ -82,8 +82,8 @@ const Home = () => {
       {jogosDeAmanha.length > 0 &&
         <Titulo>Jogos de amanhã</Titulo>}
       <ListaJogos jogos={jogosDeAmanha} />
-      <Titulo>Todos os jogos</Titulo>
-      <ListaJogos jogos={todosJogos} />
+      <Titulo>Mais jogos</Titulo>
+      <ListaJogos jogos={jogosFuturos} />
     </ContainerPadraoCentralizado>
   );
 }

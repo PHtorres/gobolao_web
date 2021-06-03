@@ -1,13 +1,15 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react';
-import { BiAward, BiFile, BiFlag, BiRun, BiTime } from 'react-icons/bi';
+import { BiAward, BiFile, BiFlag, BiFootball, BiRun, BiTime } from 'react-icons/bi';
 import BotaoPrimario from '../../components/BotaoPrimario';
 import CaixaArquivo from '../../components/CaixaArquivo';
 import CaixaTexto from '../../components/CaixaTexto';
 import ContainerPadrao from '../../components/ContainerPadrao';
+import CaixaPlacar from '../../components/ItemJogo/CaixaPlacar';
 import Selecao from '../../components/Selecao';
 import Titulo from '../../components/Titulo';
 import { useAlerta } from '../../hooks/HAlerta';
 import ICampeonato from '../../models/ICampeonato';
+import IJogo from '../../models/IJogo';
 import ITime from '../../models/ITime';
 import apiNowIMG from '../../services/ApiNowIMG';
 import ServiceCampeonato from '../../services/ServiceCampeonato';
@@ -38,6 +40,10 @@ const PainelAdministrativo: React.FC = () => {
   const [dataHora, setDataHora] = useState('');
   const [idCampeonato, setIdCampeonato] = useState(0);
   const [fase, setFase] = useState('');
+  const [placarMandante, setPlacarMandante] = useState(0);
+  const [placarVisitante, setPlacarVisitante] = useState(0);
+  const [idJogoFinalizar, setIdJogoFinalizar] = useState(0);
+  const [jogos, setJogos] = useState<IJogo[]>([]);
 
   const criarTime = async (evento: FormEvent<HTMLFormElement>) => {
 
@@ -84,9 +90,18 @@ const PainelAdministrativo: React.FC = () => {
     }
   }
 
+  const obterJogos = async () => {
+    const { conteudo, sucesso } = await servicoJogo.ObterTodosJogos();
+    if (sucesso) {
+      setJogos(conteudo);
+      setIdJogoFinalizar(conteudo[0]?.id);
+    }
+  }
+
   useEffect(() => {
     obterTimes();
     obterCampeonatos();
+    obterJogos();
   }, []);
 
   const criarJogo = async (evento: FormEvent<HTMLFormElement>) => {
@@ -101,6 +116,22 @@ const PainelAdministrativo: React.FC = () => {
 
     if (sucesso) {
       exibirMensagem('Jogo criado com sucesso.', 'sucesso');
+      return;
+    }
+
+    exibirMensagens(notificacoes, 'erro');
+  }
+
+  const finalizarJogo = async (evento: FormEvent<HTMLFormElement>) => {
+    evento.preventDefault();
+    const { notificacoes, sucesso } = await servicoJogo.FinalizarJogo({
+      idJogo:idJogoFinalizar,
+      placarMandante,
+      placarVisitante
+    });
+
+    if (sucesso) {
+      exibirMensagem('Jogo finalizado com sucesso.', 'sucesso');
       return;
     }
 
@@ -163,6 +194,24 @@ const PainelAdministrativo: React.FC = () => {
           valor={fase}
           onChange={(e) => setFase(e.target.value)} />
         <BotaoPrimario>Criar jogo</BotaoPrimario>
+      </Formulario>
+      <Titulo>Finalizar jogo</Titulo>
+      <Formulario onSubmit={finalizarJogo}>
+        <Selecao
+        Icone={BiFootball}
+        label="Jogo"
+        selecionado={idJogoFinalizar}
+        selecionarOpcao={setIdJogoFinalizar}
+        opcoes={jogos.map(jogo => {
+          return {
+            id:jogo.id,
+            texto:`${jogo.mandante} x ${jogo.visitante}`
+          }
+        })}
+        />
+        <CaixaPlacar value={placarMandante} onChange={e => setPlacarMandante(Number(e.target.value))}/>
+        <CaixaPlacar value={placarVisitante} onChange={e => setPlacarVisitante(Number(e.target.value))}/>
+        <BotaoPrimario>Finalizar jogo</BotaoPrimario>
       </Formulario>
     </ContainerPadrao>
   );

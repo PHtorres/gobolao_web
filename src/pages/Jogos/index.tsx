@@ -14,7 +14,7 @@ const Jogos = () => {
 
   useEffect(() => {
     const obterJogos = async () => {
-      const {sucesso, conteudo} = await servicoJogo.ObterJogos();
+      const {sucesso, conteudo} = await servicoJogo.ObterTodosJogos();
       if (sucesso) {
         setTodosJogos(conteudo);
       }
