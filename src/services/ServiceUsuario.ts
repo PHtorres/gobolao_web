@@ -36,9 +36,9 @@ export default class ServiceUsuario {
         return data || {} as IResposta<IUsuario>;
     }
 
-    public async AlterarUsuario(id: number, apelido: string, email: string): Promise<IResposta<IUsuario>> {
+    public async AlterarUsuario(apelido: string, email: string): Promise<IResposta<IUsuario>> {
 
-        const { data } = await apiGoBolao.put<IResposta<IUsuario>>('usuario', { id, apelido, email });
+        const { data } = await apiGoBolao.put<IResposta<IUsuario>>('usuario', { apelido, email });
         
         if(data){
             if(data.sucesso){

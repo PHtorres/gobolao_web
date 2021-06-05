@@ -44,6 +44,9 @@ const MenuMobile: React.FC = () => {
                 <ItemMenu>
                     <LinkMenu to="/rankings">Rankings</LinkMenu>
                 </ItemMenu>
+                <ItemMenu>
+                    <LinkMenu to="/me/conta">Conta</LinkMenu>
+                </ItemMenu>
                 <ItemMenu onClick={sair}>
                     <LinkMenu to="/">Sair</LinkMenu>
                 </ItemMenu>
