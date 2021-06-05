@@ -24,7 +24,7 @@ const EnviarAvatarUsuario = () => {
             </AreaAvatar>
             <LabelSelecionarArquivo htmlFor="avatar">
                 Selecionar imagem
-                <InputImagem type="file" id="avatar" onChange={aoSelecionarImagem} />
+                <InputImagem type="file" accept="image/*" id="avatar" onChange={aoSelecionarImagem} />
             </LabelSelecionarArquivo>
         </ContainerPadraoCentralizado>
     );
