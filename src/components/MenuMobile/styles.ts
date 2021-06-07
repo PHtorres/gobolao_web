@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.nav`
@@ -23,25 +22,5 @@ export const CabecalhoMenuMobile = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-`;
-
-export const TituloMenu = styled.span`
-  color: ${({theme}) => theme.corTextoTituloSecundario};
-  margin: 15px 0;
-`;
-
-export const ListaMenu = styled.ul`
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 15px;
-`;
-
-export const ItemMenu = styled.li`
-list-style: none;
-`;
-
-export const LinkMenu = styled(Link)`
-text-decoration: none;
-color: ${({theme}) => theme.corTextoMenu};
+  margin-bottom: 15px;
 `;
