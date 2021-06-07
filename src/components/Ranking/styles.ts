@@ -24,7 +24,7 @@ interface ItemClassificacaoProps{
 export const ItemClassificacao = styled.div<ItemClassificacaoProps>`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   border-bottom: 1px solid ${({theme}) => theme.corBarraDivisao };
   border-left: 8px solid ${props => props.corLighten};
   padding-left: 3px;
