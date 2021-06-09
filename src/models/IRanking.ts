@@ -1,5 +1,6 @@
 
 interface Classificacao {
+    idUsuario:number;
     apelidoUsuario: string;
     nomeImagemAvatarUsuario:string;
     pontos: number;
