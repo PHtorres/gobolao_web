@@ -11,6 +11,7 @@ import PalpitesJogo from '../pages/PalpitesJogo';
 import PerfilBolao from '../pages/PerfilBolao';
 import PesquisaBolao from '../pages/PesquisaBolao';
 import Rankings from '../pages/Rankings';
+import Regulamento from '../pages/Regulamento';
 import SolicitacoesBolao from '../pages/SolicitacoesBolao';
 
 const Privadas: React.FC = () => {
@@ -19,16 +20,17 @@ const Privadas: React.FC = () => {
         <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/jogos" component={Jogos} />
-            <Route path="/boloes" exact component={Boloes} />
+            <Route path="/me/boloes" exact component={Boloes} />
             <Route path="/boloes/pesquisa" component={PesquisaBolao} />
             <Route path="/boloes/criar" component={CriarBolao} />
             <Route path="/boloes/perfil/:idBolao+" component={PerfilBolao}/>
             <Route path="/boloes/solicitacoes/:idBolao+" component={SolicitacoesBolao}/>
-            <Route path="/palpites" exact component={Palpites} />
+            <Route path="/me/palpites" exact component={Palpites} />
             <Route path="/palpites/jogo/:idJogo+" component={PalpitesJogo}/>
-            <Route path="/rankings" component={Rankings} />
+            <Route path="/me/rankings" component={Rankings} />
             <Route path="/me/avatar" component={EnviarAvatarUsuario} />
             <Route path="/me/conta" component={ContaUsuario} />
+            <Route path="/regulamento" component={Regulamento} />
             <Route path="*" component={Home}/>
         </Switch>
     )
