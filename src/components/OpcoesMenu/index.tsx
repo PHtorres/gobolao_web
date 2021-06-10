@@ -5,7 +5,7 @@ import { useUsuario } from '../../hooks/HUsuario';
 
 const OpcoesMenu: React.FC = () => {
 
-    const {sair} = useUsuario();
+    const { sair } = useUsuario();
 
     return (
         <Container>
@@ -13,19 +13,22 @@ const OpcoesMenu: React.FC = () => {
                 <LinkMenu to="/">Home</LinkMenu>
             </ItemMenu>
             <ItemMenu>
-                <LinkMenu to="/boloes">Bolões</LinkMenu>
+                <LinkMenu to="/me/boloes">Bolões</LinkMenu>
             </ItemMenu>
             <ItemMenu>
-                <LinkMenu to="/palpites">Palpites</LinkMenu>
+                <LinkMenu to="/me/palpites">Palpites</LinkMenu>
             </ItemMenu>
             <ItemMenu>
                 <LinkMenu to="/jogos">Jogos</LinkMenu>
             </ItemMenu>
             <ItemMenu>
-                <LinkMenu to="/rankings">Rankings</LinkMenu>
+                <LinkMenu to="/me/rankings">Rankings</LinkMenu>
             </ItemMenu>
             <ItemMenu>
                 <LinkMenu to="/me/conta">Conta</LinkMenu>
+            </ItemMenu>
+            <ItemMenu>
+                <LinkMenu to="/regulamento">Regulamento</LinkMenu>
             </ItemMenu>
             <ItemMenu onClick={sair}>
                 <LinkMenu to="/">Sair</LinkMenu>
