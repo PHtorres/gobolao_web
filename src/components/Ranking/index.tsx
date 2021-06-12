@@ -14,6 +14,7 @@ import {
     CabecalhoClassificacao,
     ItemClassificacao,
     BlocoEsquerda,
+    BlocoEsquerdaUsuario,
     BlocoCentro,
     BlocoDireita,
     BlocoColocacao,
@@ -27,6 +28,7 @@ import Modal from '../Modal';
 import Titulo from '../Titulo';
 import ItemPalpite from '../ItemPalpite';
 import ContainerPadrao from '../ContainerPadrao';
+import PerfilUsuario from '../PerfilUsuario';
 
 const servicoPalpite = new ServicePalpite();
 
@@ -47,6 +49,9 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
 
     const [palpitesAdversario, setPalpitesAdversario] = useState<IPalpite[]>([]);
     const [modalPalpitesAberto, setModalPalpitesAberto] = useState(false);
+    const [modalPerfilUsuarioAberto, setModalPerfilUsuarioAberto] = useState(false);
+    const [apelidoPerfilUsuario, setApelidoPerfilUsuario] = useState('');
+    const [nomeImagemAvatarPerfilUsuario, setNomeImagemAvatarPerfilUsuario] = useState('');
 
     const pegarCorLighten = useCallback((posicao: number): string => {
         const TOTAL_PARTICIPANTES = ranking?.classificacao?.length;
@@ -85,6 +90,12 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
         }
     }, [ranking]);
 
+    const abrirPerfilUsuario = (apelido: string, nomeImagemAvatar: string) => {
+        setApelidoPerfilUsuario(apelido);
+        setNomeImagemAvatarPerfilUsuario(nomeImagemAvatar);
+        setModalPerfilUsuarioAberto(true);
+    }
+
     return (
         <Container>
             <AreaInfo>
@@ -113,10 +124,13 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
                                 {index + 1}
                             </TextoNumeroColocacao>
                         </BlocoColocacao>
-                        <BlocoEsquerda>
+                        <BlocoEsquerdaUsuario
+                            onClick={() => abrirPerfilUsuario(
+                                item.apelidoUsuario,
+                                item.nomeImagemAvatarUsuario)}>
                             <AvatarUsuario nomeImagemAvatar={item.nomeImagemAvatarUsuario} />
                             <TextoSecundario>{item.apelidoUsuario}</TextoSecundario>
-                        </BlocoEsquerda>
+                        </BlocoEsquerdaUsuario>
                         <BlocoCentro>
                             <TextoSecundario>{item.pontos}</TextoSecundario>
                         </BlocoCentro>
@@ -138,6 +152,16 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
                     </Titulo>
                     {palpitesAdversario.map(palpite =>
                         <ItemPalpite modoPublico key={palpite.id} palpite={palpite} />)}
+                </ContainerPadrao>
+            </Modal>
+            <Modal
+                isOpen={modalPerfilUsuarioAberto}
+                fechar={() => setModalPerfilUsuarioAberto(false)}
+            >
+                <ContainerPadrao>
+                    <PerfilUsuario
+                        apelido={apelidoPerfilUsuario}
+                        nomeImagemAvatar={nomeImagemAvatarPerfilUsuario} />
                 </ContainerPadrao>
             </Modal>
         </Container>

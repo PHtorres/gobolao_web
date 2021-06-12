@@ -49,6 +49,10 @@ export const BlocoEsquerda = styled(Bloco)`
 justify-content: flex-start;
 `;
 
+export const BlocoEsquerdaUsuario = styled(BlocoEsquerda)`
+cursor:pointer;
+`;
+
 export const BlocoCentro = styled(Bloco)`
 justify-content: center;
 `;
