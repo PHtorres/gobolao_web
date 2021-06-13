@@ -51,6 +51,7 @@ justify-content: flex-start;
 
 export const BlocoEsquerdaUsuario = styled(BlocoEsquerda)`
 cursor:pointer;
+width: 35%;
 `;
 
 export const BlocoCentro = styled(Bloco)`
