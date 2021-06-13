@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const fromTheLeft = keyframes`
 from {
@@ -11,8 +11,11 @@ to{
 }
 `;
 
+interface ContainerProps{
+  conteudoCentralizadoVertical?:boolean;
+}
 
-export const Container = styled.div`
+export const Container = styled.div<ContainerProps>`
 
   position:fixed;
   height:100vh;
@@ -23,8 +26,13 @@ export const Container = styled.div`
   z-index:100;
   display:flex;
   justify-content:center;
-  align-items:center;
   padding: 10px;
+
+${({conteudoCentralizadoVertical}) => 
+conteudoCentralizadoVertical && css`
+align-items: center;
+`}
+
 `;
 
 export const AreaBotaoFechar = styled.div`
@@ -41,4 +49,9 @@ export const AreaConteudo = styled.div`
   animation:${fromTheLeft} 1s;
   background-color:${props => props.theme.corFundo};
   border-radius:10px;
+  height: auto;
+  overflow-y: auto;
+  &::-webkit-scrollbar{
+    display:none;
+  }
 `;

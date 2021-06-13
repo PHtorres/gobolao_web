@@ -25,6 +25,7 @@ export const SugestaoProvider: React.FC = ({ children }) => {
             <Modal
                 isOpen={sugestaoVisivel}
                 fechar={() => setSugestaoVisivel(false)}
+                conteudoCentralizadoVertical
             >
                 <Sugestao
                     sugestao={sugestao}

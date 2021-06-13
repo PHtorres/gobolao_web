@@ -7,13 +7,15 @@ import { Container, AreaBotaoFechar, AreaConteudo } from './styles';
 interface ModalProps {
     isOpen: boolean;
     fechar():void;
+    conteudoCentralizadoVertical?:boolean;
 }
 
-const Modal: React.FC<ModalProps> = ({ children, isOpen, fechar }) => {
+const Modal: React.FC<ModalProps> = ({ children, isOpen, fechar, conteudoCentralizadoVertical }) => {
 
     if (isOpen) {
         return (
-            <Container>
+            <Container
+            conteudoCentralizadoVertical={conteudoCentralizadoVertical}>
                 <AreaBotaoFechar onClick={fechar}>
                     <AiOutlineClose color={TemaDark.corTextoMenu} size={40} />
                 </AreaBotaoFechar>
