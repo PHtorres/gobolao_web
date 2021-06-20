@@ -3,6 +3,7 @@ import React from 'react';
 import { Container } from './styles';
 
 import avatarPadrao from '../../assets/images/AvatarUsuarioPadrao.png';
+import utils from '../../utils';
 
 interface AvatarUsuarioGrandeProps {
     nomeImagemAvatar: string;
@@ -11,7 +12,7 @@ interface AvatarUsuarioGrandeProps {
 const AvatarUsuarioGrande: React.FC<AvatarUsuarioGrandeProps> = ({ nomeImagemAvatar }) => {
 
     const imagemValida = (nomeImagemAvatar.length > 0);
-    const sourceImagem = imagemValida?`${process.env.REACT_APP_NOWIMG_URL_IMAGENS}/${nomeImagemAvatar}`:avatarPadrao;
+    const sourceImagem = imagemValida?utils.urlImagem(nomeImagemAvatar):avatarPadrao;
 
     return (
         <Container src={sourceImagem}/>
