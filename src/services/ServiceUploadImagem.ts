@@ -12,7 +12,7 @@ export default class ServiceUploadImagem {
         if (arquivos) {
             const form = new FormData();
             form.append('imagem', arquivos[0]);
-            const {data} = await apiNowIMG.post<RespostaEnvioImagem>('imagem/upload', form);
+            const {data} = await apiNowIMG.post<RespostaEnvioImagem>('api/v1/imagem/upload', form);
             return data || {sucesso:false} as RespostaEnvioImagem;
         }
 

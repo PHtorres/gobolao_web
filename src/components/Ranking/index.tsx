@@ -157,6 +157,7 @@ const Ranking: React.FC<RankingProps> = ({ ranking }) => {
             <Modal
                 isOpen={modalPerfilUsuarioAberto}
                 fechar={() => setModalPerfilUsuarioAberto(false)}
+                conteudoCentralizadoVertical
             >
                 <ContainerPadrao>
                     <PerfilUsuario

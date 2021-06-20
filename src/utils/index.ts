@@ -1,6 +1,6 @@
 const utils = {
     urlImagem(nomeImagem:string){
-        return `${process.env.REACT_APP_NOWIMG_URL_IMAGENS}/${nomeImagem}`;
+        return `${process.env.REACT_APP_NOWIMG_URL_API}/imagens/${nomeImagem}`;
     },
     MascaraCNPJ(cnpj: string): string {
         if (cnpj?.trim().length === 14) {

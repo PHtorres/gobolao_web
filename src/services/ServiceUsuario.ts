@@ -16,7 +16,7 @@ export default class ServiceUsuario {
 
     public async Autenticar(email: string, senha: string): Promise<IResultadoAutenticacao> {
 
-        const { data } = await apiGoBolao.post<IResultadoAutenticacao>('Autenticacao', { email, senha });
+        const { data } = await apiGoBolao.post<IResultadoAutenticacao>('api/v1/Autenticacao', { email, senha });
 
         if (data) {
             if (data.resposta.sucesso) {
@@ -32,13 +32,13 @@ export default class ServiceUsuario {
     }
 
     public async CriarUsuario(usuario: ICriarUsuario): Promise<IResposta<IUsuario>> {
-        const { data } = await apiGoBolao.post<IResposta<IUsuario>>('usuario', usuario);
+        const { data } = await apiGoBolao.post<IResposta<IUsuario>>('api/v1/usuario', usuario);
         return data || {} as IResposta<IUsuario>;
     }
 
     public async AlterarUsuario(apelido: string, email: string): Promise<IResposta<IUsuario>> {
 
-        const { data } = await apiGoBolao.put<IResposta<IUsuario>>('usuario', { apelido, email });
+        const { data } = await apiGoBolao.put<IResposta<IUsuario>>('api/v1/usuario', { apelido, email });
         
         if(data){
             if(data.sucesso){
@@ -54,7 +54,7 @@ export default class ServiceUsuario {
 
         const {sucesso, nomeImagem} = await this.uploadImagem.EnviarImagem(arquivos);
         if(sucesso){
-            const {data} = await apiGoBolao.patch<IResposta<IUsuario>>('usuario/avatar', {
+            const {data} = await apiGoBolao.patch<IResposta<IUsuario>>('api/v1/usuario/avatar', {
                 nomeImagemAvatar:nomeImagem
             });
             if(data?.sucesso){
@@ -68,15 +68,14 @@ export default class ServiceUsuario {
         return {sucesso:false} as IResposta<IUsuario>;
     }
 
-    // public async AlterarSenhaUsuario(id: number, 
-    //                                  senhaAtual: string, 
-    //                                  novaSenha: string, 
-    //                                  confirmaNovaSeha:string): Promise<IResposta<IUsuario>> {
+    public async AlterarSenhaUsuario(senhaAtual: string, 
+                                     novaSenha: string, 
+                                     confirmaSenha:string): Promise<IResposta<IUsuario>> {
                                          
-    //     const { data } = await apiDoczen.patch<IResposta<IUsuario>>('usuario/senha',{
-    //         id, senhaAtual, novaSenha, confirmaNovaSeha
-    //     });
+        const { data } = await apiGoBolao.patch<IResposta<IUsuario>>('api/v1/usuario/senha',{
+            senhaAtual, novaSenha, confirmaSenha
+        });
 
-    //     return data || {} as IResposta<IUsuario>;
-    // }
+        return data || {sucesso:false} as IResposta<IUsuario>;
+    }
 }
