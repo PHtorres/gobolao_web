@@ -1,7 +1,7 @@
 import React from 'react';
+import useUsuario from '../../contexts/hooks/useUsuario';
 
 import { Container, ItemMenu, LinkMenu } from './styles';
-import { useUsuario } from '../../hooks/HUsuario';
 
 const OpcoesMenu: React.FC = () => {
 

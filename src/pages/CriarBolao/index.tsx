@@ -6,7 +6,7 @@ import CaixaTexto from '../../components/CaixaTexto';
 import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import Selecao from '../../components/Selecao';
 import Titulo from '../../components/Titulo';
-import { useAlerta } from '../../hooks/HAlerta';
+import useAlerta from '../../contexts/hooks/useAlerta';
 import ICampeonato from '../../models/ICampeonato';
 import ServiceBolao from '../../services/ServiceBolao';
 import ServiceCampeonato from '../../services/ServiceCampeonato';

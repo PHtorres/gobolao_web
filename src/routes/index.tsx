@@ -1,6 +1,6 @@
 import React from 'react';
-import { useAlerta } from '../hooks/HAlerta';
-import { useUsuario } from '../hooks/HUsuario';
+import useAlerta from '../contexts/hooks/useAlerta';
+import useUsuario from '../contexts/hooks/useUsuario';
 import apiGoBolao from '../services/ApiGoBolao';
 import Admin from './Admin';
 import Privadas from './Privadas';

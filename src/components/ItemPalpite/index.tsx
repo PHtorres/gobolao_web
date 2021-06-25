@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ServicePalpite from '../../services/ServicePalpite';
 import AvatarTime from '../AvatarTime';
-import { useAlerta } from '../../hooks/HAlerta';
 import IPalpite from '../../models/IPalpite';
 import Texto from '../Texto';
 import {
@@ -16,6 +15,7 @@ import {
 import BotaoAlerta from '../BotaoAlerta';
 import TextoDestaque from '../TextoDestaque';
 import TituloSecundario from '../TituloSecundario';
+import useAlerta from '../../contexts/hooks/useAlerta';
 
 const servicoPalpite = new ServicePalpite();
 

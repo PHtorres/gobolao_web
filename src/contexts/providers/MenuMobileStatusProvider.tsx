@@ -1,12 +1,6 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
-import MenuMobile from '../components/MenuMobile';
-
-interface IContextoMenuMobileStatus {
-    exibirMenuMobile(): void;
-    esconderMenuMobile(): void;
-}
-
-const ContextoMenuMobileStatus = createContext<IContextoMenuMobileStatus>({} as IContextoMenuMobileStatus);
+import { useCallback, useState } from "react";
+import MenuMobile from "../../components/MenuMobile";
+import ContextoMenuMobileStatus from "../ContextoMenuMobileStatus";
 
 export const MenuMobileStatusProvider: React.FC = ({ children }) => {
 
@@ -26,9 +20,4 @@ export const MenuMobileStatusProvider: React.FC = ({ children }) => {
             {visivel && <MenuMobile />}
         </ContextoMenuMobileStatus.Provider>
     );
-}
-
-export const useMenuMobileStatus = (): IContextoMenuMobileStatus => {
-    const contexto = useContext(ContextoMenuMobileStatus);
-    return contexto;
 }

@@ -6,8 +6,8 @@ import CaixaTexto from '../../components/CaixaTexto';
 import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import Modal from '../../components/Modal';
 import Titulo from '../../components/Titulo';
-import { useAlerta } from '../../hooks/HAlerta';
-import { useUsuario } from '../../hooks/HUsuario';
+import useAlerta from '../../contexts/hooks/useAlerta';
+import useUsuario from '../../contexts/hooks/useUsuario';
 import ServiceUsuario from '../../services/ServiceUsuario';
 import { Formulario } from './styles';
 

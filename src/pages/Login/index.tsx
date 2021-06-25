@@ -5,9 +5,9 @@ import Titulo from '../../components/Titulo';
 import { Formulario, AreaSugerirCriarConta } from './styles';
 import { BiUser, BiLock } from 'react-icons/bi';
 import BotaoPrimario from '../../components/BotaoPrimario';
-import { useUsuario } from '../../hooks/HUsuario';
 import BotaoLink from '../../components/BotaoLink';
 import Texto from '../../components/Texto';
+import useUsuario from '../../contexts/hooks/useUsuario';
 
 const Login: React.FC = () => {
 

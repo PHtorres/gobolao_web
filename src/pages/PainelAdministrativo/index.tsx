@@ -7,7 +7,7 @@ import ContainerPadrao from '../../components/ContainerPadrao';
 import CaixaPlacar from '../../components/ItemJogo/CaixaPlacar';
 import Selecao from '../../components/Selecao';
 import Titulo from '../../components/Titulo';
-import { useAlerta } from '../../hooks/HAlerta';
+import useAlerta from '../../contexts/hooks/useAlerta';
 import ICampeonato from '../../models/ICampeonato';
 import IJogo from '../../models/IJogo';
 import ITime from '../../models/ITime';

@@ -1,17 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
-import ListaAlertas from '../components/ListaAlertas';
-import IMensagemAlerta from '../models/IMensagemAlerta';
-import {uuid} from 'uuidv4';
+import { useCallback, useState } from "react";
+import { uuid } from "uuidv4";
+import ListaAlertas from "../../components/ListaAlertas";
+import IMensagemAlerta from "../../models/IMensagemAlerta";
+import ContextoAlerta from "../ContextoAlerta";
 
-interface IContextoAlerta {
-    exibirMensagem(mensagem: string, tipo: 'erro' | 'sucesso'): void;
-    exibirMensagens(mensagens: string[], tipo: 'erro' | 'sucesso'): void;
-    removerMensagem(id: string): void;
-}
-
-const ContextoAlerta = createContext<IContextoAlerta>({} as IContextoAlerta);
-
-export const AlertaProvider: React.FC = ({ children }) => {
+const AlertaProvider: React.FC = ({ children }) => {
 
     const [listaMensagens, setListaMensagens] = useState<IMensagemAlerta[]>([]);
 
@@ -40,7 +33,4 @@ export const AlertaProvider: React.FC = ({ children }) => {
     );
 }
 
-export const useAlerta = (): IContextoAlerta => {
-    const contexto = useContext(ContextoAlerta);
-    return contexto;
-}
+export default AlertaProvider;
