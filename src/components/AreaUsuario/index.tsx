@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useUsuario } from '../../hooks/HUsuario';
+import useUsuario from '../../contexts/hooks/useUsuario';
 import AvatarUsuario from '../AvatarUsuario';
 import Texto from '../Texto';
 import { Container } from './styles';

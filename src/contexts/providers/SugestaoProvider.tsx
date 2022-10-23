@@ -1,15 +1,10 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
-import Modal from '../components/Modal';
-import Sugestao from '../components/Sugestao';
-import ISugestao from '../models/ISugestao';
+import { useCallback, useState } from "react";
+import Modal from "../../components/Modal";
+import Sugestao from "../../components/Sugestao";
+import ISugestao from "../../models/ISugestao";
+import ContextoSugestao from "../ContextoSugestao";
 
-interface IContextoSugestao {
-    enviarSugestao(sugestao: ISugestao): void;
-}
-
-const ContextoSugestao = createContext<IContextoSugestao>({} as IContextoSugestao);
-
-export const SugestaoProvider: React.FC = ({ children }) => {
+const SugestaoProvider: React.FC = ({ children }) => {
 
     const [sugestaoVisivel, setSugestaoVisivel] = useState(false);
     const [sugestao, setSugestao] = useState<ISugestao>({} as ISugestao);
@@ -36,7 +31,4 @@ export const SugestaoProvider: React.FC = ({ children }) => {
     );
 }
 
-export const useSugestao = (): IContextoSugestao => {
-    const contexto = useContext(ContextoSugestao);
-    return contexto;
-}
+export default SugestaoProvider;

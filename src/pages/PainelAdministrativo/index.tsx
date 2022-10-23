@@ -7,7 +7,7 @@ import ContainerPadrao from '../../components/ContainerPadrao';
 import CaixaPlacar from '../../components/ItemJogo/CaixaPlacar';
 import Selecao from '../../components/Selecao';
 import Titulo from '../../components/Titulo';
-import { useAlerta } from '../../hooks/HAlerta';
+import useAlerta from '../../contexts/hooks/useAlerta';
 import ICampeonato from '../../models/ICampeonato';
 import IJogo from '../../models/IJogo';
 import ITime from '../../models/ITime';
@@ -52,7 +52,7 @@ const PainelAdministrativo: React.FC = () => {
     if (arquivo) {
       const formData = new FormData();
       formData.append('imagem', arquivo);
-      const { data } = await apiNowIMG.post<RespostaAPINowIMG>('imagem/upload', formData);
+      const { data } = await apiNowIMG.post<RespostaAPINowIMG>('api/v1/imagem/upload', formData);
       if (data) {
         if (data.sucesso) {
           const { sucesso, notificacoes } = await servicoTime.CriarTime(nome, data.nomeImagem);

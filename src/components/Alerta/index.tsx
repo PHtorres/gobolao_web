@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
-import { useAlerta } from '../../hooks/HAlerta';
+import useAlerta from '../../contexts/hooks/useAlerta';
 import IMensagemAlerta from '../../models/IMensagemAlerta';
 import Tema from '../../theme';
 

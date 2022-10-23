@@ -18,8 +18,8 @@ import {
     AreaDireita,
     LinhaBotaoEnviarPalpite
 } from './styles';
-import { useAlerta } from '../../hooks/HAlerta';
 import BotaoPrimarioLink from '../BotaoPrimarioLink';
+import useAlerta from '../../contexts/hooks/useAlerta';
 
 const servicoPalpite = new ServicePalpite();
 interface JogoProps {

@@ -1,16 +1,16 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { AlertaProvider } from './hooks/HAlerta';
-import { CarregandoProvider } from './hooks/HCarregando';
-import { MenuMobileStatusProvider } from './hooks/HMenuMobileStatus';
-import { SugestaoProvider } from './hooks/HSugestao';
-import { UsuarioProvider } from './hooks/HUsuario';
+import AlertaProvider from './contexts/providers/AlertaProvider';
+import CarregandoProvider from './contexts/providers/CarregandoProvider';
+import { MenuMobileStatusProvider } from './contexts/providers/MenuMobileStatusProvider';
+import SugestaoProvider from './contexts/providers/SugestaoProvider';
+import UsuarioProvider from './contexts/providers/UsuarioProvider';
 import LayoutBase from './layouts/LayoutBase';
 import GlobalStyles from './styles/global';
 import Tema from './theme';
 
-function App() {
+const App = () => {
   return (
     <ThemeProvider theme={Tema}>
       <CarregandoProvider>

@@ -1,8 +1,8 @@
 import React from 'react';
 import AreaUsuario from '../../../components/AreaUsuario';
 import LogoGoBolao from '../../../components/LogoGoBolao';
-import { useMenuMobileStatus } from '../../../hooks/HMenuMobileStatus';
-import { useUsuario } from '../../../hooks/HUsuario';
+import useMenuMobileStatus from '../../../contexts/hooks/useMenuMobileStatus';
+import useUsuario from '../../../contexts/hooks/useUsuario';
 import Tema from '../../../theme';
 
 import { Container, IconeMenu } from './styles';

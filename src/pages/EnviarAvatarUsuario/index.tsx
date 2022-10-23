@@ -2,7 +2,7 @@ import React, { ChangeEvent, useCallback } from 'react';
 import AvatarUsuarioGrande from '../../components/AvatarUsuarioGrande';
 import ContainerPadraoCentralizado from '../../components/ContainerPadraoCentralizado';
 import Titulo from '../../components/Titulo';
-import { useUsuario } from '../../hooks/HUsuario';
+import useUsuario from '../../contexts/hooks/useUsuario';
 
 import { AreaAvatar, InputImagem, LabelSelecionarArquivo } from './styles';
 

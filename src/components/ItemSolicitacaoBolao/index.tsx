@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAlerta } from '../../hooks/HAlerta';
 import {
     Container,
     LinhaSolicitacao,
@@ -13,6 +12,7 @@ import { IBolaoSolicitacao } from '../../models/IBolaoSolicitacao';
 import ServiceBolaoSolicitacao from '../../services/ServiceBolaoSolicitacao';
 import BotaoSucesso from '../BotaoSucesso';
 import AvatarUsuario from '../AvatarUsuario';
+import useAlerta from '../../contexts/hooks/useAlerta';
 
 const servicoBolaoSolicitacao = new ServiceBolaoSolicitacao();
 

@@ -1,26 +1,16 @@
-import React, { createContext, useCallback, useState, useContext } from 'react';
-import ICriarUsuario from '../models/ICriarUsuario';
-import IUsuario from '../models/IUsuario';
-import apiGoBolao from '../services/ApiGoBolao';
-import ServiceStorage from '../services/ServiceStorage';
-import ServiceUsuario from '../services/ServiceUsuario';
-import { useAlerta } from './HAlerta';
-
-interface IContextoUsuario {
-    usuario: IUsuario;
-    logar(email: string, senha: string): Promise<void>;
-    sair(): void;
-    criar(criarUsuarioProps: ICriarUsuario): void;
-    alterar(apelido: string, email: string): void;
-    alterarAvatar(arquivos: FileList): void;
-}
+import { useCallback, useState } from "react";
+import ICriarUsuario from "../../models/ICriarUsuario";
+import IUsuario from "../../models/IUsuario";
+import apiGoBolao from "../../services/ApiGoBolao";
+import ServiceStorage from "../../services/ServiceStorage";
+import ServiceUsuario from "../../services/ServiceUsuario";
+import ContextoUsuario from "../ContextoUsuario";
+import useAlerta from "../hooks/useAlerta";
 
 const storage = new ServiceStorage();
 const servicoUsuario = new ServiceUsuario();
 
-const ContextoUsuario = createContext<IContextoUsuario>({} as IContextoUsuario);
-
-export const UsuarioProvider: React.FC = ({ children }) => {
+const UsuarioProvider: React.FC = ({ children }) => {
 
     const { exibirMensagens, exibirMensagem } = useAlerta();
 
@@ -116,7 +106,4 @@ export const UsuarioProvider: React.FC = ({ children }) => {
     );
 }
 
-export const useUsuario = (): IContextoUsuario => {
-    const contexto = useContext(ContextoUsuario);
-    return contexto;
-}
+export default UsuarioProvider;

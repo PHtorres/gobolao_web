@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useAlerta } from '../../hooks/HAlerta';
 import {BiLock, BiGlobe} from 'react-icons/bi';
 import IBolao from '../../models/IBolao';
 import ServiceBolao from '../../services/ServiceBolao';
@@ -12,6 +11,7 @@ import Texto from '../Texto';
 import TextoDestaque from '../TextoDestaque';
 import { Container, AreaBlocos, BlocoEsquerda, BlocoCentro, BlocoDireita, AreaBotoes } from './styles';
 import Tema from '../../theme';
+import useAlerta from '../../contexts/hooks/useAlerta';
 
 interface ItemBolaoProps {
     bolao: IBolao;
