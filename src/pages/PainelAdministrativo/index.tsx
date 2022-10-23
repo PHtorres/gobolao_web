@@ -52,7 +52,7 @@ const PainelAdministrativo: React.FC = () => {
     if (arquivo) {
       const formData = new FormData();
       formData.append('imagem', arquivo);
-      const { data } = await apiNowIMG.post<RespostaAPINowIMG>('imagem/upload', formData);
+      const { data } = await apiNowIMG.post<RespostaAPINowIMG>('api/v1/imagem/upload', formData);
       if (data) {
         if (data.sucesso) {
           const { sucesso, notificacoes } = await servicoTime.CriarTime(nome, data.nomeImagem);
