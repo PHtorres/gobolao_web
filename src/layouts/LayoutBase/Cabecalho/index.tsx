@@ -16,7 +16,7 @@ const Cabecalho: React.FC = () => {
     <Container>
       <LogoGoBolao />
       {usuario.logado && <AreaUsuario />}
-      <IconeMenu onClick={exibirMenuMobile} size={35} color={Tema.corTextoMenu}/>
+      {usuario.logado && <IconeMenu onClick={exibirMenuMobile} size={35} color={Tema.corTextoMenu}/>}
     </Container>
   );
 }
