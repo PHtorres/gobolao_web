@@ -37,7 +37,6 @@ const Regulamento = () => {
       <CardPadrao>
         <TituloSecundario>Pontuação</TituloSecundario>
         <BlocoInfos>
-          <Texto>Quando temos um time vencedor:</Texto>
           <Texto>
             - O seu palpite pode resultar em 1 de 6 pontuações possíveis: 16,
             12, 10, 8, 2 ou 0 pontos.
@@ -61,23 +60,6 @@ const Regulamento = () => {
           <Texto>
             - Caso o seu palpite acerte somente o número de gols de um time,
             você conquistará 2 pontos.
-          </Texto>
-          <Texto>
-            - Caso o seu palpite não resulte em nenhum dos casos acima, não
-            haverá pontuação.
-          </Texto>
-        </BlocoInfos>
-        <BlocoInfos>
-          <Texto>Quando temos um empate:</Texto>
-          <Texto>
-            - O seu palpite pode resultar em 1 de 3 pontuações possíveis: 16, 10 ou 0 pontos.
-          </Texto>
-          <Texto>
-            - Caso o seu palpite acerte o placar do jogo, você terá a conquista
-            máxima de 16 pontos.
-          </Texto>
-          <Texto>
-            - Caso o seu palpite acerte o resultado do jogo, um empate, você conquistará 10 pontos.
           </Texto>
           <Texto>
             - Caso o seu palpite não resulte em nenhum dos casos acima, não
