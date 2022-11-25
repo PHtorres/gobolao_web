@@ -1,15 +1,15 @@
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import PainelAdministrativo from '../pages/PainelAdministrativo';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import PainelAdministrativo from "../pages/PainelAdministrativo";
+import { privateRoutes } from "./Privadas";
+
+const adminRoutes = [
+  <Route path="/admin" exact component={PainelAdministrativo} />,
+];
 
 const Admin: React.FC = () => {
-
-    return (
-        <Switch>
-            <Route path="/" exact component={PainelAdministrativo} />
-            <Route path="*" component={PainelAdministrativo}/>
-        </Switch>
-    )
-}
+  const routesToRender = [...adminRoutes, ...privateRoutes];
+  return <Switch>{routesToRender.map((route) => route)}</Switch>;
+};
 
 export default Admin;

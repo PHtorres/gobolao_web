@@ -8,7 +8,7 @@ import Publicas from './Publicas';
 
 const Rotas: React.FC = () => {
 
-  const { usuario, sair } = useUsuario();
+  const { usuario, isAdmin, sair } = useUsuario();
   const {exibirMensagens} = useAlerta();
 
   apiGoBolao.addResponseTransform((response): void => {
@@ -45,7 +45,7 @@ const Rotas: React.FC = () => {
     }
   });
 
-  if (usuario.email === 'ph@gmail.com') {
+  if (isAdmin) {
     return <Admin />
   }
 
